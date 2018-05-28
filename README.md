@@ -1,7 +1,54 @@
 # docker-workshop-ii
+
 Getting started with deploying with Docker
 
-1. [Minikube Hello World](https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/)
+### Setup
+
+https://github.com/excellalabs/docker-workshop-2
+
+1. Initializes cluster master node:
+
+The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
+
+To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster. Pick one of the machines you previously installed kubeadm on, and run:
+
+kubeadm init will first run a series of prechecks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
+
+[kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) - a toolkil that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
+
+Run: `kubeadm init --apiserver-advertise-address $(hostname -i)`
+
+Watch for *Your Kubernetes master has initialized successfully!*
+
+1. Initialize cluster networking:
+
+`kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on Run:
+
+`kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+
+1. (Optional) Create an nginx deployment:
+
+`kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+
+
+### What is Kubernetes?
+
+Kubernetes is a container management system. It runs and manages containerized applications on a cluster.
+
+*Basic things we can ask Kubernetes to do*
+
+Start x number of containers using a given image and place an internal load balancer in front of these containers. When needing to scale, we can easily grow our cluster and add containers. We can replace my containers with a new version of our image, and keep processing requests during the upgrade as we update containers one at a time.
+
+*Other things that Kubernetes can do for us*
+
+* Basic autoscaling
+* Blue/green deployment, canary deployment
+* Long running services, but also batch (one-off) jobs
+* Overcommit our cluster and evict low-priority jobs
+* Run services with stateful data (databases etc.)
+* Fine-grained access control defining what can be done by whom on which resources
+* Integrating third party services (service catalog)
+* Automating complex tasks (operators)
 
 #### Deploy an app
 
