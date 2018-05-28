@@ -88,8 +88,16 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
     1. Clean up, `kubectl delete deploy/elastic`
 
 
-//todo: what do you do next when deployed? Monitoring, logging management?
+//todo: what do you do next when deployed? Monitoring, logging management?  
+Logging is delegated to the container engine
 
+Metrics are typically handled with Prometheus
+
+#### Next steps to production...
+
+* set up automated builds of container images from the code repo
+* set up a CI pipeline using these container images
+* set up a CD pipeline (for staging/QA) using these images
 
 ### What is Kubernetes?
 
