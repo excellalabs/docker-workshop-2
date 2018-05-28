@@ -6,6 +6,9 @@ Getting started with deploying with Docker
 
 https://github.com/excellalabs/docker-workshop-2
 
+
+1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
+
 1. Initializes cluster master node:
 
 The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
@@ -20,6 +23,8 @@ Run: `kubeadm init --apiserver-advertise-address $(hostname -i)`
 
 Watch for *Your Kubernetes master has initialized successfully!*
 
+1. Take `kubeadm join...` from output, and run in other node to join
+
 1. Initialize cluster networking:
 
 `kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on Run:
@@ -29,6 +34,61 @@ Watch for *Your Kubernetes master has initialized successfully!*
 1. (Optional) Create an nginx deployment:
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+
+1. Run a pod
+
+    1. Run an alpine image with a ping commnad via a pod: `kubectl run pingpong --image alpine ping 8.8.8.8`
+
+    1. Run `kubectl get all`. The results show:
+
+        we created deploy/pingpong - the deployment that we just created, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
+
+        our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
+        
+        the replica set created po/pingpong-yyyy - a pod created by the replica sets
+    
+1. Run `kubectl logs deploy/pingpong --tail 1 --follow` to see the output.
+
+1. Scale by creating more copies of the pod: `kubectl scale deploy/pingpong --replicas 8`
+
+1. See the resilience provided by the deployment, which will keep the number of replicas requested.
+
+    1. In one terminal, run: `kubectl get pods -w`
+
+    1. Watch the output of that while running this in another terminal: `kubectl delete pod pingpong-xxxx` filling in `xxxx` with a pod identifier.
+
+1. Clean up your pods, `kubectl delete deploy/pingpong`
+
+1. **Create a service** 
+
+A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Different types of services include,
+
+`ClusterIP` - a virtual IP address is allocated for the service (in an internal, private range) this IP address is reachable only from within the cluster (nodes and pods) our code can connect to the service using the original port number
+
+`NodePort` - a port is allocated for the service (by default, in the 30000-32768 range) that port is made available on all our nodes and anybody can connect to it our code must be changed to connect to that new port number
+
+`LoadBalancer` - external load balancer allocated for the service
+
+`ExternalName` the DNS entry managed by kube-dns will just be a CNAME
+
+1. **Run service with open port** 
+
+    1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
+
+    1. Watch them being started, `kubectl get pods -w`
+
+    1. Create a ClusterIP service for the API port: `kubectl expose deploy/elastic --port 9200`
+
+    1. Look at IP address allocated: `kubectl get svc`
+
+    1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
+
+    1. Send some requests: `curl http://$IP:9200/`
+
+    1. Clean up, `kubectl delete deploy/elastic`
+
+
+//todo: what do you do next when deployed? Monitoring, logging management?
 
 
 ### What is Kubernetes?
