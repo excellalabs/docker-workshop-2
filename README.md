@@ -1,15 +1,24 @@
-# docker-workshop-ii
+# Getting started with deploying with Docker
 
-Getting started with deploying with Docker
+In this workshop, we will take a containerized application, and go through basic steps to deploy it.
 
-### Setup
+We'll be using Kubernetes since it has become the de facto container orchestrator.
 
-https://github.com/excellalabs/docker-workshop-2
+### Part 1: Basic deployment
 
+1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has things we need such as Kubernetes CLI tools like `kubeadm`, `kubectl`.
 
-1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
+1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. 
 
-1. Initializes cluster master node:
+    1. Run `git clone https://github.com/excellalabs/docker-workshop-1`
+
+    1. Run `docker-compose up`, and when it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
+
+    Just like that you have an app running online. We could leave it like this, but it would not be very stable. If the server reboots or Docker restarts, the container and app will shut down. Also, how do we monitor the health of the service and its logs? There are many additional things to cover when getting it production-ready.
+
+### Part 2: Using an orchestrator
+
+1. Initialize cluster master node:
 
 The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
 
@@ -23,7 +32,7 @@ Run: `kubeadm init --apiserver-advertise-address $(hostname -i)`
 
 Watch for *Your Kubernetes master has initialized successfully!*
 
-1. Take `kubeadm join...` from output, and run in other node to join
+1. Copy the block `kubeadm join...` from the output, and create another node and run that in the terminal to join it to the cluster.
 
 1. Initialize cluster networking:
 
@@ -34,6 +43,15 @@ Watch for *Your Kubernetes master has initialized successfully!*
 1. (Optional) Create an nginx deployment:
 
 `kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+
+1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers). 
+
+    1. Try to list the pods: `kubectl get pods`. Nothing shows up because it defaults in the default namespace, with has no pods. 
+
+    1. List all namespaces: `kubectl get namespaces`
+
+    1. Get the pods from the namespace with the Kubernetes services: `kubectl -n kube-system get pods` and you will see the pods that deliver the containers with the Kubernetes functionality.
+
 
 1. Run a pod
 
@@ -92,6 +110,9 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 Logging is delegated to the container engine
 
 Metrics are typically handled with Prometheus
+
+1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
+
 
 #### Next steps to production...
 
