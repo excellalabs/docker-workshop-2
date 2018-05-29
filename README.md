@@ -30,6 +30,11 @@ Just like that you have an app running online. We could leave it like this, but 
 
 We will set up Kubernetes and use it to deploy instead of Docker directly.
 
+General concepts: 
+
+    - Wrap containers with configuration for orchestration management. (ECS has task definition, Kubernetes has spec, Swarm uses additions to Compose).
+    - Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
+
 #### Set up a Kubernetes cluster
 
 The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
