@@ -159,6 +159,8 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
     ```
 
+    `kubectl apply -f https://raw.githubusercontent.com/lachie83/k8s-manifest/master/pod-example.yaml`
+
     kubectl apply -f kuard-pod.yaml
 
 
