@@ -10,23 +10,21 @@ An overview of container orchestration could be given here, and here are [slides
 
 1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has Docker and Kubernetes tools installed already.
 
-1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. 
-
-    1. Run
+1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. Run:
 
     ```bash
     git clone https://github.com/excellalabs/docker-workshop-1
     ```
 
-    1. Change into the docker-workshop 1 directory and run `docker-compose up`
+1. Change into the docker-workshop 1 directory and run `docker-compose up`
 
-        When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
+When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
 
-        Just like that you have an app running online. We could leave it like this, but it would not be very stable. If the server reboots or Docker restarts, the container and app will shut down.
+Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
     
-        We also have to consider how we will monitor the health of the service and its logs, among other services deployed. There are many additional things to cover when getting it production-ready.
-
-        We also don't have a straightforward way to manage scaling multiple containers. These things are addressed by orchestrators or container management systems.
+    - If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
+    - We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
+    - We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
 
 ### Using an orchestrator
 
@@ -76,7 +74,11 @@ The servers have the Docker and Kubernetes tools installed but Kubernetes is not
 
     `kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on. 
 
-    Run `kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+    Run: 
+    
+    ```bash
+    kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+    ```
 
 1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers). 
 
