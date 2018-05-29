@@ -95,7 +95,7 @@ The servers have the Docker and Kubernetes tools installed but Kubernetes is not
 
     1. List services with `kubectl get services`
 
-#### Create a service
+#### Create a service from a simgle image
 
 The `kubectl run` command creates a service, which creates a pod with your container(s).
 
@@ -184,6 +184,9 @@ Logging is delegated to the container engine
 Metrics are typically handled with Prometheus
 
 create/pint to  yaml spec(s)
+
+take dockerized app into kube service/deployment (diff?)
+
 
 1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
 
