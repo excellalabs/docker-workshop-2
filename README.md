@@ -8,54 +8,98 @@ An overview of container orchestration could be given here, and here are [slides
 
 ### Part 1: Basic deployment
 
-1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has things we need such as Kubernetes CLI tools like `kubeadm`, `kubectl`.
+1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has Docker and Kubernetes tools installed already.
 
 1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. 
 
-    1. Run `git clone https://github.com/excellalabs/docker-workshop-1` and change into the docker-workshop 1 directory.
+    1. Run
 
-    1. Run `docker-compose up`, and when it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
+    ```bash
+    git clone https://github.com/excellalabs/docker-workshop-1
+    ```
 
-    Just like that you have an app running online. We could leave it like this, but it would not be very stable. If the server reboots or Docker restarts, the container and app will shut down. Also, how do we monitor the health of the service and its logs? There are many additional things to cover when getting it production-ready.
+    1. Change into the docker-workshop 1 directory and run `docker-compose up`
 
-### Part 2: Using an orchestrator
+        When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
 
-1. Initialize cluster master node:
+        Just like that you have an app running online. We could leave it like this, but it would not be very stable. If the server reboots or Docker restarts, the container and app will shut down.
+    
+        We also have to consider how we will monitor the health of the service and its logs, among other services deployed. There are many additional things to cover when getting it production-ready.
 
-The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
+        We also don't have a straightforward way to manage scaling multiple containers. These things are addressed by orchestrators or container management systems.
 
-To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster. Pick one of the machines you previously installed kubeadm on, and run:
+### Using an orchestrator
 
-kubeadm init will first run a series of prechecks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
+We will set up Kubernetes and use it to deploy instead of Docker directly.
 
-[kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) - a toolkil that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
+#### Set up a Kubernetes cluster
 
-Run: `kubeadm init --apiserver-advertise-address $(hostname -i)`
+The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
-Watch for *Your Kubernetes master has initialized successfully!*
+1. Try listing Kubernetes resources with
 
-1. Copy the block `kubeadm join...` from the output, and create another node and run that in the terminal to join it to the cluster.
+    ```bash
+    kubectl get all
+    ```
 
-1. Initialize cluster networking:
+    You'll see it errors since there is no Kubernetes cluster initialized.
 
-`kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on Run:
+1. Initialize cluster master node using `kubeadm`:
 
-`kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
+    The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
 
-1. (Optional) Create an nginx deployment:
+    To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster.
 
-`kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+    kubeadm init will first run a series of pre-checks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
+
+    [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkil that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
+
+    1. **Run:**
+
+        ```bash
+        kubeadm init --apiserver-advertise-address $(hostname -i)
+        ````
+
+        Watch for *Your Kubernetes master has initialized successfully!*
+
+    1. Check the status with `kubectl get componentstatus`
+
+1. **Join another node to cluster**
+
+    1. Copy the outputted block `kubeadm join...` from the init commnad, and run that in the other node(s)'s terminal to join to the cluster.
+
+    1. See that it joined, `kubtcrl get nodes`
+
+    1. Describe a node with `kubectl describe nodes node2`
+
+1. **Initialize networking using Weave Net:**
+
+    `kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on. 
+
+    Run `kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
 
 1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers). 
 
-    1. Try to list the pods: `kubectl get pods`. Nothing shows up because it defaults in the default namespace, with has no pods. 
+    1. Try to list the running containers via Kubernetes pods: `kubectl get pods`. Nothing shows up because it defaults in the default namespace, with has no pods. 
 
     1. List all namespaces: `kubectl get namespaces`
 
     1. Get the pods from the namespace with the Kubernetes services: `kubectl -n kube-system get pods` and you will see the pods that deliver the containers with the Kubernetes functionality.
 
+    1. Change the default namespace with 
+    
+        ```
+        kubectl config set-context my-context --namespace=mystuff
+        kubectl config use-context my-context
+        ```
 
-1. Run a pod
+    1. List services with `kubectl get services`
+
+#### Create a service
+
+The `kubectl run` command creates a service, which creates a pod with your container(s).
+
+1. Createa a serivce:
 
     1. Run an alpine image with a ping commnad via a pod: `kubectl run pingpong --image alpine ping 8.8.8.8`
 
@@ -79,7 +123,7 @@ Watch for *Your Kubernetes master has initialized successfully!*
 
 1. Clean up your pods, `kubectl delete deploy/pingpong`
 
-1. **Create a service** 
+#### About Kubernetes Services
 
 A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Different types of services include,
 
@@ -91,7 +135,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-1. **Run service with open port** 
+1. **Run service with open port**
 
     1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
@@ -107,17 +151,44 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
     1. Clean up, `kubectl delete deploy/elastic`
 
+1. Create an nginx deployment via `Kubernetes spec`:
+
+    This points to a spec describing a Nginx deployment and can be run via `apply`. Run: 
+
+    ```bash
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+    ```
+
+    kubectl apply -f kuard-pod.yaml
+
+
+
+#### Deploy from Deployment Object
+
+1. Deployments can be specified in a yaml file, see `/sample-kube-deployment-nginx.yaml`. You can run this deployment like this: 
+
+    `kubectl apply -f sample-kube-deployment-nginx.yaml`
+
+1. Display info about deployment: `kubectl describe deployment nginx-deployment`
+
+1. List the pods created by the deployment: `kubectl get pods -l app=nginx`
+
+1. Display information about a pod: `kubectl describe pod <pod-name>`
+
 
 //todo: what do you do next when deployed? Monitoring, logging management?  
 Logging is delegated to the container engine
 
 Metrics are typically handled with Prometheus
 
+create/pint to  yaml spec(s)
+
 1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
 
 
 #### Next steps to production...
 
+* Building images in a registry
 * set up automated builds of container images from the code repo
 * set up a CI pipeline using these container images
 * set up a CD pipeline (for staging/QA) using these images
@@ -140,38 +211,3 @@ Start x number of containers using a given image and place an internal load bala
 * Fine-grained access control defining what can be done by whom on which resources
 * Integrating third party services (service catalog)
 * Automating complex tasks (operators)
-
-#### Deploy an app
-
-1. Create a deployment: `kubectl run hello-node --image=hello-node:v1 --port=8080`
-
-1. View deployments, etc: `kubectl get [deployments | pods | events]`. View config: `kubectl config view`
-
-1. Create a service to expose Pod outside Kubernetes virtual networK: `kubectl expose deployment hello-node --type=LoadBalancer`
-
-1. View service: `kubectl get services`
-
-1. Service is accessible on Minikube via `minikube service [SERVICE NAME]`
-
-1. View logs: `kubectl logs [POD NAME]`
-
-1. Update app: Rebuild image and then run `kubectl set image deployment/hello-node hello-node=hello-node:v2`
-
-1. Clean up: to delete the service and deployment run: 
-
-    ```sh
-    kubectl delete service hello-node
-    kubectl delete deployment hello-node
-    ```
-
-#### Deploy from Deployment Object
-
-1. Deployments can be specified in a yaml file, see `/sample-kube-deployment-nginx.yaml`. You can run this deployment like this: 
-
-    `kubectl apply -f sample-kube-deployment-nginx.yaml`
-
-1. Display info about deployment: `kubectl describe deployment nginx-deployment`
-
-1. List the pods created by the deployment: `kubectl get pods -l app=nginx`
-
-1. Display information about a pod: `kubectl describe pod <pod-name>`
