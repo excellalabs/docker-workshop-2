@@ -4,13 +4,15 @@ In this workshop, we will take a containerized application, and go through basic
 
 We'll be using Kubernetes since it has become the de facto container orchestrator.
 
+An overview of container orchestration could be given here, and here are [slides for that](https://drive.google.com/file/d/1yaUfuSBkgzl9s7KcGLNogJX2if5w04ri/view?usp=sharing)
+
 ### Part 1: Basic deployment
 
 1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has things we need such as Kubernetes CLI tools like `kubeadm`, `kubectl`.
 
 1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. 
 
-    1. Run `git clone https://github.com/excellalabs/docker-workshop-1`
+    1. Run `git clone https://github.com/excellalabs/docker-workshop-1` and change into the docker-workshop 1 directory.
 
     1. Run `docker-compose up`, and when it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
 
