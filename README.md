@@ -49,6 +49,19 @@ All orchestrators share core concepts around wrapping containers for more manage
 
 #### Set up a Kubernetes cluster
 
+Kubernetes concepts:
+
+* Master - normally doesn't run containers, but the key Kubernetes services
+* Nodes - non-master servers that run containers (in pods)
+* Namespaces - logical grouping of cluster for use with multiple users or projects
+* Labels - K/V pair for categorizing objects such as pods
+* Pods - wraps container(s)
+* DaemonSets - ensures all (or some) nodes run a copy of a pod (i.e. for running a logs collection daemon on every node)
+* Deployments - manages the desired state, i.e. specify number of pods
+* Services - allows external pod communication
+* Secrets - a safer place to store secrets than pods
+* Volumes - share data between containers, persistent storage; beefier than Docker volumes, tied to life of 
+
 The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
 1. Try listing Kubernetes resources with
