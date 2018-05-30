@@ -49,7 +49,26 @@ All orchestrators share core concepts around wrapping containers for more manage
 
 #### Set up a Kubernetes cluster
 
-Kubernetes concepts:
+### What is Kubernetes?
+
+Kubernetes is a container management system. It runs and manages containerized applications on a cluster.
+
+*Basic things we can ask Kubernetes to do*
+
+Start x number of containers using a given image and place an internal load balancer in front of these containers. When needing to scale, we can easily grow our cluster and add containers. We can replace containers with a new version of our image, and keep processing requests during the upgrade as we update containers one at a time.
+
+*Other things that Kubernetes can do for us:*
+
+* Basic autoscaling
+* Blue/green deployment, canary deployment
+* Long running services, but also batch (one-off) jobs
+* Overcommit our cluster and evict low-priority jobs
+* Run services with stateful data (databases etc.)
+* Fine-grained access control defining what can be done by whom on which resources
+* Integrating third party services (service catalog)
+* Automating complex tasks (operators)
+
+*Kubernetes concepts:*
 
 * Master - normally doesn't run containers, but the key Kubernetes services
 * Nodes - non-master servers that run containers (in pods)
@@ -61,8 +80,8 @@ Kubernetes concepts:
 * Services - allows external pod communication
 * Secrets - a safer place to store secrets than pods
 * Volumes - share data between containers, persistent storage; beefier than Docker volumes, tied to life of 
-* kubectl
-* kubeadm
+* kubectl - main CLI tool
+* kubeadm - CLI tool for managing Kubernetes clusters
 
 The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
@@ -153,7 +172,7 @@ The `kubectl run` command creates a deployment, which creates a pod (along with 
 
 1. Clean up your pods, `kubectl delete deploy/pingpong`
 
-#### About Kubernetes Services
+#### Kubernetes Services
 
 A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Different types of services include,
 
@@ -181,48 +200,21 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
     1. Clean up, `kubectl delete deploy/elastic`
 
-
-
-
 1. Create an nginx deployment via `Kubernetes spec`:
 
     This points to a spec describing a Nginx deployment and can be run via `apply`. Run: 
 
     ```bash
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml`
+    kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml
     ```
 
-    `kubectl apply -f https://raw.githubusercontent.com/lachie83/k8s-manifest/master/pod-example.yaml`
+    You can now navigate to the page the Nginx is serving.
 
-    kubectl apply -f kuard-pod.yaml
-
-
-
-#### Deploy from Deployment Object
-
-1. Deployments can be specified in a yaml file, see `/sample-kube-deployment-nginx.yaml`. You can run this deployment like this: 
-
-    `kubectl apply -f sample-kube-deployment-nginx.yaml`
-
-1. Display info about deployment: `kubectl describe deployment nginx-deployment`
+1. Display info about deployment: `kubectl describe deployment my-nginx`
 
 1. List the pods created by the deployment: `kubectl get pods -l app=nginx`
 
 1. Display information about a pod: `kubectl describe pod <pod-name>`
-
-
-//todo: what do you do next when deployed? Monitoring, logging management?  
-Logging is delegated to the container engine
-
-Metrics are typically handled with Prometheus
-
-create/pint to  yaml spec(s)
-
-take dockerized app into kube service/deployment (diff?)
-
-
-1. Clone this sample container-based app, `git clone https://github.com/dockersamples/dockercoins`
-
 
 #### Next steps to production...
 
@@ -230,25 +222,7 @@ take dockerized app into kube service/deployment (diff?)
 * set up automated builds of container images from the code repo
 * set up a CI pipeline using these container images
 * set up a CD pipeline (for staging/QA) using these images
-
-### What is Kubernetes?
-
-Kubernetes is a container management system. It runs and manages containerized applications on a cluster.
-
-*Basic things we can ask Kubernetes to do*
-
-Start x number of containers using a given image and place an internal load balancer in front of these containers. When needing to scale, we can easily grow our cluster and add containers. We can replace my containers with a new version of our image, and keep processing requests during the upgrade as we update containers one at a time.
-
-*Other things that Kubernetes can do for us*
-
-* Basic autoscaling
-* Blue/green deployment, canary deployment
-* Long running services, but also batch (one-off) jobs
-* Overcommit our cluster and evict low-priority jobs
-* Run services with stateful data (databases etc.)
-* Fine-grained access control defining what can be done by whom on which resources
-* Integrating third party services (service catalog)
-* Automating complex tasks (operators)
+* Set up logging and monitoring
 
 ## Next Steps
 
