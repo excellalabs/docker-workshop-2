@@ -10,7 +10,7 @@ An overview of container orchestration could be given here, and here are [slides
 
 1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has Docker and Kubernetes tools installed already.
 
-1. To pick up where Part 1 left off, we'll quickly spin up the hello world application we containerized. Run:
+1. To use the app we containerized in Part 1, we'll quickly spin up the hello world application we containerized. Run:
 
     ```bash
     git clone https://github.com/excellalabs/docker-workshop-1
@@ -200,6 +200,10 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
     1. Clean up, `kubectl delete deploy/elastic`
 
+#### Kubernetes Services 
+
+Services expose your pod externally.
+
 1. Create an nginx deployment via `Kubernetes spec`:
 
     This points to a spec describing a Nginx deployment and can be run via `apply`. Run: 
@@ -227,3 +231,5 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 ## Next Steps
 
 * [Scenario exercises](https://www.katacoda.com/courses/kubernetes)
+* [Kubernetes for Beginners interactive training](https://training.play-with-kubernetes.com/)
+* [Kubernetes Cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet)
