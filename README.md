@@ -61,6 +61,8 @@ Kubernetes concepts:
 * Services - allows external pod communication
 * Secrets - a safer place to store secrets than pods
 * Volumes - share data between containers, persistent storage; beefier than Docker volumes, tied to life of 
+* kubectl
+* kubeadm
 
 The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
@@ -127,9 +129,9 @@ The servers have the Docker and Kubernetes tools installed but Kubernetes is not
 
     1. List services with `kubectl get services`
 
-#### Create a service from a simgle image
+#### Create a deployment from a simgle image
 
-The `kubectl run` command creates a service, which creates a pod with your container(s).
+The `kubectl run` command creates a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
 
 1. Createa a serivce:
 
@@ -137,21 +139,17 @@ The `kubectl run` command creates a service, which creates a pod with your conta
 
     1. Run `kubectl get all`. The results show:
 
-        we created deploy/pingpong - the deployment that we just created, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
+        - we created deploy/pingpong - the deployment that we just created, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
 
-        our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
+        - our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
         
-        the replica set created po/pingpong-yyyy - a pod created by the replica sets
+        - the replica set created po/pingpong-yyyy - a pod created by the replica sets
     
 1. Run `kubectl logs deploy/pingpong --tail 1 --follow` to see the output.
 
 1. Scale by creating more copies of the pod: `kubectl scale deploy/pingpong --replicas 8`
 
-1. See the resilience provided by the deployment, which will keep the number of replicas requested.
-
-    1. In one terminal, run: `kubectl get pods -w`
-
-    1. Watch the output of that while running this in another terminal: `kubectl delete pod pingpong-xxxx` filling in `xxxx` with a pod identifier.
+1. Go to node2 and do `docker ps` to see all the containers running there.
 
 1. Clean up your pods, `kubectl delete deploy/pingpong`
 
@@ -182,6 +180,9 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
     1. Send some requests: `curl http://$IP:9200/`
 
     1. Clean up, `kubectl delete deploy/elastic`
+
+
+
 
 1. Create an nginx deployment via `Kubernetes spec`:
 
@@ -248,3 +249,7 @@ Start x number of containers using a given image and place an internal load bala
 * Fine-grained access control defining what can be done by whom on which resources
 * Integrating third party services (service catalog)
 * Automating complex tasks (operators)
+
+## Next Steps
+
+* [Scenario exercises](https://www.katacoda.com/courses/kubernetes)
