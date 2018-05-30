@@ -4,6 +4,9 @@ metadata:
   name: rss-site
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: rss-site
   template:
     metadata:
       labels:
