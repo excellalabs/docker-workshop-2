@@ -22,9 +22,9 @@ When it says it's serving, you should see a link for `80` next to the local IP, 
 
 Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
     
-    - If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
-    - We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
-    - We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
+- If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
+- We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
+- We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
 
 ### Using an orchestrator
 
