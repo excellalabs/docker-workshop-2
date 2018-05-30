@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: web
+        app: rss-site
     spec:
       containers:
         - name: front-end
