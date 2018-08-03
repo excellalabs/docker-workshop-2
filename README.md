@@ -6,27 +6,7 @@ We'll be using Kubernetes since it has become the de facto container orchestrato
 
 An overview of container orchestration could be given here, and here are [slides for that](https://drive.google.com/file/d/1yaUfuSBkgzl9s7KcGLNogJX2if5w04ri/view?usp=sharing)
 
-### Part 1: Basic deployment
-
-1. Navigate to [Play with K8s](https://labs.play-with-k8s.com/), which gives us servers temporarily that we can set up in a Kubernetes cluster. It has Docker and Kubernetes tools installed already.
-
-1. To use the app we containerized in Part 1, we'll quickly spin up the hello world application we containerized. Run:
-
-    ```bash
-    git clone https://github.com/excellalabs/docker-workshop-1
-    ```
-
-1. Change into the docker-workshop 1 directory and run `docker-compose up`
-
-When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
-
-Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
-    
-- If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
-- We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
-- We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
-
-### Using an orchestrator
+## Using an orchestrator
 
 No longer are applications always made up a a single process or a small number of processes across a handful of servers. They are being decomposed into microservices for a number of benefits. Different work comes from this, such as:
 
@@ -47,7 +27,7 @@ All orchestrators share core concepts around wrapping containers for more manage
 
 - Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
 
-### What is Kubernetes?
+## What is Kubernetes?
 
 Kubernetes is a container management system. It runs and manages containerized applications on a cluster.
 
@@ -81,3 +61,4 @@ Start x number of containers using a given image and place an internal load bala
 * kubectl - main CLI tool
 * kubeadm - CLI tool for managing Kubernetes clusters
 
+[Next](README.1.md)
