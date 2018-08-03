@@ -61,4 +61,4 @@ Start x number of containers using a given image and place an internal load bala
 * kubectl - main CLI tool
 * kubeadm - CLI tool for managing Kubernetes clusters
 
-[Next](README.1.md)
+[Next](README.2.md)
