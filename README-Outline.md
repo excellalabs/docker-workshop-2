@@ -32,6 +32,9 @@ Workshop
 
 - Exercises
     - *SETUP:* Set up a Kubernetes cluster, the quick way for playing
-    - Build pod with multiple containers, service, deployment
-    - Delpoy
+    - Build pod with multiple containers
+        - Add service
+        - Add deployment
+    - Delpoy to cluster
+    - Manage
     - Add volume
