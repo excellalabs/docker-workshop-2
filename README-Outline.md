@@ -29,8 +29,9 @@ Workshop
                 - pods, in prod, volumes, networking
 
 ## Workshop
-    - Exercises
-        - Set up a Kubernetes cluster, the quick way for playing
-        - Build pod with multiple containers, service, deployment
-        - Delpoy
-        - Add volume
+
+- Exercises
+    - *SETUP:* Set up a Kubernetes cluster, the quick way for playing
+    - Build pod with multiple containers, service, deployment
+    - Delpoy
+    - Add volume
