@@ -1,11 +1,3 @@
-# Getting started with deploying with Docker
-
-In this workshop, we will take a containerized application, and go through basic steps to deploy it.
-
-We'll be using Kubernetes since it has become the de facto container orchestrator.
-
-An overview of container orchestration could be given here, and here are [slides for that](https://drive.google.com/file/d/1yaUfuSBkgzl9s7KcGLNogJX2if5w04ri/view?usp=sharing)
-
 ## Cluster & Networking Overview 
 
 //TODO
