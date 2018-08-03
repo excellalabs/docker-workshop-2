@@ -4,6 +4,8 @@
 
 //TODO
 
+* [Kubernetes Networking Model](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
+
 ## Tools
 
 **Weave Net**
