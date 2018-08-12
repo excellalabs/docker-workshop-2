@@ -145,7 +145,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ## Overview: Kubernetes Deployment
 
-//TODO - move the manifest file into this repo (/examples), but probably better to use a sample app vs nginx container so change that too; use the same app used just above in service manifest
+//TODO - move the manifest file into this repo (/examples), but probably better to use a sample app vs nginx container so change that too; use the same app used just above in service manifestß
 
 1. Create an nginx deployment via `Kubernetes spec`:
 
