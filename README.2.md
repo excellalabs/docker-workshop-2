@@ -89,7 +89,7 @@ Just like that you have an app running online. We could leave it like this, but 
 
 - Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
 
-## Exercise 2: Create a deployment from a simgle image
+## Exercise 2: Create a deployment from a simgle image using kubectl
 
 The `kubectl run` command creates a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
 
@@ -125,7 +125,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-**Run service with open port**
+**Run service with open port with kubectl**
 
 1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
@@ -141,9 +141,11 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 1. Clean up, `kubectl delete deploy/elastic`
 
+//TODO - create service with manifest: put manifest into /examples folder and add apply/etc commands
+
 ## Overview: Kubernetes Deployment
 
-//TODO
+//TODO - move the manifest file into this repo (/examples), but probably better to use a sample app vs nginx container so change that too; use the same app used just above in service manifest
 
 1. Create an nginx deployment via `Kubernetes spec`:
 
