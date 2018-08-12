@@ -3,8 +3,8 @@
 ## Agenda 
 
 1.5 hours
-Lightning talk
-Workshop
+Lightning talk on container orchestration
+Workshop with/Kube concepts throughout
 
 ### Container Orchestration & Kubernets Lightning Talk
     - Container management outline:
