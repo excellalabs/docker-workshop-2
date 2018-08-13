@@ -38,7 +38,7 @@ The servers have the Docker and Kubernetes tools installed but Kubernetes is not
 
     1. Copy the outputted block `kubeadm join...` from the init commnad, and run that in the other node(s)'s terminal to join to the cluster.
 
-    1. See that it joined, `kubtcrl get nodes`
+    1. See that it joined, `kubectl get nodes`
 
     1. Describe a node with `kubectl describe nodes node2`
 
