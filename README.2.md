@@ -165,6 +165,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ## Next steps to production...
 
+* [Deploy a stateful app in Kubernetes - MySQL](https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/#deploy-mysql)
 * Building images in a registry
 * set up automated builds of container images from the code repo
 * set up a CI pipeline using these container images
