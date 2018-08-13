@@ -1,6 +1,20 @@
-## Cluster & Networking Overview 
+## Kubernetes Basics
 
 //TODO
+
+We'll go through the core operations with Kubernetes, which include:
+
+1. Setting up a cluster
+1. Prepare an application to deploy
+1. Create a deployment
+    - scale
+1. Create a service
+    - ClusterIP type for non-public, cluster-only, single IP for a set of pod such as for Redis stores
+    - NodePort type for external to cluster (LoadBalancer can be used for cloud provider load balencers)
+    - Get the IP address with `minikube service frontend --url`
+1. Clean up multiple resources via labels
+
+1. 
 
 ## Setup: Set up a Kubernetes cluster
 
