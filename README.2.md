@@ -11,10 +11,7 @@ We'll go through the core operations with Kubernetes, which include:
 1. Create a service
     - ClusterIP type for non-public, cluster-only, single IP for a set of pod such as for Redis stores
     - NodePort type for external to cluster (LoadBalancer can be used for cloud provider load balencers)
-    - Get the IP address with `minikube service frontend --url`
-1. Clean up multiple resources via labels
-
-1. 
+    - Get the IP address with `minikube service frontend --url` 
 
 ## Setup: Set up a Kubernetes cluster
 
