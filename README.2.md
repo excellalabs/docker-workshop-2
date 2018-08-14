@@ -7,13 +7,10 @@ We'll go through the core operations with Kubernetes, which include:
 1. Create a deployment
     - scale
 1. Create a service
-    - ClusterIP type for non-public, cluster-only, single IP for a set of pod such as for Redis stores
-    - NodePort type for external to cluster (LoadBalancer can be used for cloud provider load balencers)
-    - Get the IP address with `minikube service frontend --url` 
-
+    
 ## Setup: Set up a Kubernetes cluster
 
-1. Go to Play with K8's and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
+1. Go to [Play with K8's](https://labs.play-with-k8s.com/) and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
 1. Try listing Kubernetes resources with
 
