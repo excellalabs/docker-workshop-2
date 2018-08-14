@@ -25,6 +25,4 @@ All orchestrators share core concepts around wrapping containers for more manage
     - Set how app will scale on a container level
     - Set resource usage of containers
 
-- Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
-
 [Next - Kubernetes](README-Kubernetes.1.md)
