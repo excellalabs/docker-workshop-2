@@ -15,7 +15,7 @@ We'll go through the core operations with Kubernetes, which include:
 
 ## Setup: Set up a Kubernetes cluster
 
-The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
+1. Go to Play with K8's and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
 1. Try listing Kubernetes resources with
 
@@ -93,7 +93,9 @@ The servers have the Docker and Kubernetes tools installed but Kubernetes is not
 When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
 
 Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
-    
+
+### Need for an orchestrator 
+
 - If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
 - We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
 - We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
@@ -102,7 +104,9 @@ Just like that you have an app running online. We could leave it like this, but 
 
 ## Exercise 2: Create a deployment from a simgle image using kubectl
 
-The `kubectl run` command creates a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
+A deployment manages the desired state, such as for specifying the number of pods. The *reconciliation loop* makes the desired state the actual state.
+
+The `kubectl run` command can create a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
 
 1. Createa a serivce:
 
