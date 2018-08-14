@@ -1,7 +1,5 @@
 ## Kubernetes Basics
 
-//TODO
-
 We'll go through the core operations with Kubernetes, which include:
 
 1. Setting up a cluster
