@@ -44,7 +44,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. Check the status with `kubectl get componentstatus`
 
-1. **Join another node to cluster**
+1. Join another node to cluster
 
     1. Copy the outputted block `kubeadm join...` from the init commnad
     
@@ -54,7 +54,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. Describe a node with `kubectl describe nodes node2`
 
-1. **Initialize networking using Weave Net:**
+1. Initialize networking using Weave Net:
 
     `kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on. 
 
