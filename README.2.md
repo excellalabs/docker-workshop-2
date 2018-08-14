@@ -127,8 +127,6 @@ The `kubectl run` command can create a deployment, which creates a pod (along wi
 
 1. Clean up your pods, `kubectl delete deploy/pingpong`
 
-//TODO add exercise to kill one and have it spin back up
-
 ## Overview: Kubernetes Services
 
 A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Services expose your pod externally.
