@@ -161,7 +161,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ### Exercise: Create a deployment from a manifest file
 
-1. Create an nginx deployment via `Kubernetes spec`:
+1. Create an nginx deployment & service via `Kubernetes spec`:
 
     This points to a spec describing a Nginx deployment and can be run via `apply`. Run: 
 
