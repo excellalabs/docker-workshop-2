@@ -20,6 +20,8 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
 [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
 
+**Exercise: Set up the cluster**
+
 1. Go to [Play with K8's](https://labs.play-with-k8s.com/) and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
 1. Try listing Kubernetes resources with
@@ -101,9 +103,11 @@ Just like that you have an app running online. We could leave it like this, but 
 
 - Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
 
-## Exercise: Create a deployment from a simgle image using kubectl
+## Kubernetes Deployments
 
 A deployment manages the desired state, such as for specifying the number of pods. The *reconciliation loop* makes the desired state the actual state.
+
+### Exercise: Create a deployment from a simgle image using kubectl
 
 The `kubectl run` command can create a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
 
