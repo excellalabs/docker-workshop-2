@@ -50,7 +50,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
     
     1. Go into another node's terminal and run that command to join it to the cluseter
 
-    1. See that it joined, `kubtcrl get nodes`
+    1. See that it joined, `kubectl get nodes`
 
     1. Describe a node with `kubectl describe nodes node2`
 
