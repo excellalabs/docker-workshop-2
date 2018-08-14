@@ -1,4 +1,4 @@
-## Kubernetes Basics
+## Workshop: Kubernetes Basics
 
 We'll go through the core operations with Kubernetes, which include:
 
@@ -9,6 +9,16 @@ We'll go through the core operations with Kubernetes, which include:
 1. Create a service
     
 ## Setup: Set up a Kubernetes cluster
+
+**Kubernetes Cluster Overview**
+
+The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
+
+To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster.
+
+kubeadm init will first run a series of pre-checks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
+
+[kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
 
 1. Go to [Play with K8's](https://labs.play-with-k8s.com/) and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
@@ -22,14 +32,6 @@ We'll go through the core operations with Kubernetes, which include:
 
 1. Initialize cluster master node using `kubeadm`:
 
-    The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
-
-    To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster.
-
-    kubeadm init will first run a series of pre-checks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
-
-    [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkil that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
-
     1. **Run:**
 
         ```bash
@@ -42,7 +44,9 @@ We'll go through the core operations with Kubernetes, which include:
 
 1. **Join another node to cluster**
 
-    1. Copy the outputted block `kubeadm join...` from the init commnad, and run that in the other node(s)'s terminal to join to the cluster.
+    1. Copy the outputted block `kubeadm join...` from the init commnad
+    
+    1. Go into another node's terminal and run that command to join it to the cluseter
 
     1. See that it joined, `kubtcrl get nodes`
 

@@ -5,9 +5,9 @@ Kubernetes runs and manages containerized applications on a cluster.
 
 *Basic things we can ask Kubernetes to do*
 
-Start x number of containers using a given image and place an internal load balancer in front of these containers. 
+* Start x number of containers using a given image and place an internal load balancer in front of these containers. 
 
-When needing to scale, we can easily grow our cluster and/or add containers. We can replace containers with a new version of our image, and keep processing requests during the upgrade.
+* When needing to scale, we can easily grow our cluster and/or add containers. We can replace containers with a new version of our image, and keep processing requests during the upgrade.
 
 *Other things that Kubernetes can do for us:*
 
