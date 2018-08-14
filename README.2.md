@@ -79,7 +79,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. List services with `kubectl get services`
 
-## Exercise 1: Basic deployment
+## Exercise: Basic deployment
 
 1. We containered an app in Part 1, so we'll quickly spin that up and deploy it. Run:
 
