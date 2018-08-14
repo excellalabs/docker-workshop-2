@@ -139,7 +139,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-### Exercise: Run service with open port with kubectl**
+### Exercise: Run service with open port with kubectl
 
 1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
