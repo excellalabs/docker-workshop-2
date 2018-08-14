@@ -2,7 +2,8 @@
 
 **TODO:**
 
-- add 
+- change image used in deployment & service to be the same. Use a multi-container app if it's feasible for the timeframe.
+- add step of creating deployment and service with manifest: put manifest into /examples folder and add apply/etc commands
 
 ## Agenda 
 
