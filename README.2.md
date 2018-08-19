@@ -112,6 +112,8 @@ A deployment manages the desired state, such as for specifying the number of pod
 
 The `kubectl run` command can create a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
 
+In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments. 
+
 1. Createa a serivce:
 
     1. Run an alpine image with a ping commnad via a pod: `kubectl run pingpong --image alpine ping 8.8.8.8`
@@ -166,11 +168,15 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 1. Create an nginx deployment & service via `Kubernetes spec`:
 
-    This points to a spec describing a Nginx deployment and can be run via `apply`. Run: 
+    1. Open this yaml file at this location: [nginx-app.yml](https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml)
+    
+    This is a manifest file describing an Nginx deployment and can be run via `apply`.
 
-    ```bash
-    kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml
-    ```
+    1. Run it directly:
+
+        ```bash
+        kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml
+        ```
 
     You can now navigate to the page the Nginx is serving.
 
