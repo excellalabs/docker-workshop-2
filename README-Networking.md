@@ -8,6 +8,8 @@ Kubernetes approaches networking somewhat differently than Docker does by defaul
   - Pod-to-Service communications: done using services.
   - External-to-Service communications: done using services.
 
+Kubernetes assumes that pods can communicate with other pods, regardless of which host they land on. Every pod gets its own IP address so you do not need to explicitly create links between pods and you almost never need to deal with mapping container ports to host ports.
+
 Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.  This means that you do not need to explicitly create links between pods and you almost never need to deal with mapping container ports to host ports.  Containers are addressed with routable IP addresses that are on the subnet of the external network.  
 
 This model is not only less complex overall, but it is principally compatible with the desire for Kubernetes to enable low-friction porting of apps from VMs to containers. If your job previously ran in a VM, your VM had an IP and could talk to other VMs in your project. This is the same basic model.
@@ -61,8 +63,8 @@ Try it out: `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(k
 **Flannel**
 
 Try it out: `kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml`
-  - Focused on networking. For network policy, other projects such as Calico can be used
-  -  Main advantage of this model is that it removes the port mapping complexities that come from sharing a single host IP
+  - Does not implement network policy.  For network policy, other projects such as Calico can be used
+  - Main advantage of this model is that it removes the port mapping complexities that come from sharing a single host IP
   - Does not control how containers are networked to the host, only how the traffic is transported between hosts
   - Service Discovery
     - Runs a small, single binary agent called `flanneld` on each host, and is responsible for allocating a subnet lease to each host out of a larger, preconfigured address space
@@ -73,8 +75,8 @@ Try it out: `kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/m
 Try it out: `kubectl apply -f \
 https://docs.projectcalico.org/v3.2/getting-started/kubernetes/installation/rbac.yaml`
 
-  - Enables networking and network policy
-  - Secure component communication: can configure etcd to encrypt its communications with TLS and require clients to present certificates signed by the etcd certificate authority.
+  - Enables network policy
+  - More granular level secure component communication: can configure etcd to encrypt its communications with TLS and require clients to present certificates signed by the etcd certificate authority.
   - Can configure BGP peers, IP Pools, use of IPV6 and IPVS, IP-in-IP, Node IP and Subnet, etc.
 
 **Romana**
