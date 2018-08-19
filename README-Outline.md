@@ -8,6 +8,7 @@
 - add step to deployment exercise to kill one and have it spin back up
 - Add exercise for updating app
 
+
 - Topics to be ready to address:
 
     * Architecture of Kubernets (see Pluralsight 3 hour Nigel course)
