@@ -63,6 +63,8 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
     ```bash
     kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     ```
+    
+    [Read more about Networking Solutions](README-Networking.md)
 
 1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers). 
 

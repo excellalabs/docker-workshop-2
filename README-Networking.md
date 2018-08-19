@@ -1,6 +1,24 @@
 # Networking in Container Management
 
 ## Overview
+Kubernetes approaches networking somewhat differently than Docker does by default. There are 4 distinct networking problems to solve:
+
+  - Highly-coupled container-to-container communications: this is solved by pods and localhost communications.
+  - Pod-to-Pod communications
+  - Pod-to-Service communications: done using services.
+  - External-to-Service communications: done using services.
+
+Pods can be treated much like VMs or physical hosts from the perspectives of port allocation, naming, service discovery, load balancing, application configuration, and migration.  This means that you do not need to explicitly create links between pods and you almost never need to deal with mapping container ports to host ports.  Containers are addressed with routable IP addresses that are on the subnet of the external network.  
+
+This model is not only less complex overall, but it is principally compatible with the desire for Kubernetes to enable low-friction porting of apps from VMs to containers. If your job previously ran in a VM, your VM had an IP and could talk to other VMs in your project. This is the same basic model.
+
+***Kubernetes imposes the following fundamental requirements*** on any networking implementation (barring any intentional network segmentation policies):
+  - all containers can communicate with all other containers without NAT
+  - all nodes can communicate with all containers (and vice-versa) without NAT
+  - the IP that a container sees itself as is the same IP that others see it as
+
+## CNI Interfaces
+
 Kubernetes uses CNI as an interface between network providers and Kubernetes networking.  The [Container Networking Interface](https://github.com/containernetworking/cni) (CNI), a Cloud Native Computing Foundation project, consists of a specification and libraries for writing plugins to configure network interfaces in Linux containers, along with a number of supported plugins. CNI concerns itself only with network connectivity of containers and removing allocated resources when the container is deleted. Because of this focus, CNI has a wide range of support and the specification is simple to implement.
 
 * [Kubernetes Networking Model & CNI Plug-ins](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
