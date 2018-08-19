@@ -14,6 +14,11 @@
         - Docker networking expansion
             - [Container Network Model (CNM) design spec]()
 
+    * Linux integratioons
+    * Windows kernal integations
+    * Maintain cluster in EC2, EKS, GCP
+    * Set up cluster from scratch
+
 ## Agenda 
 
 1.5 hours
