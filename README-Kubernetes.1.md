@@ -22,9 +22,12 @@ Kubernetes runs and manages containerized applications on a cluster.
 
 *General concepts*
 
-* Manifest (configuration) files:  Written in YAML or JSON, these files describe the desired state of your application in terms of Kubernetes API objects. A file can include one or more API object descriptions (manifests). (See the example YAML from the stateless app).
+* Manifest (configuration) files:  Written in YAML or JSON, these files describe the desired state of your application in terms of Kubernetes API objects. A file can include one or more API object descriptions (manifests).
 
-* Pods:  This is the basic unit for all of the workloads you run on Kubernetes. These workloads, such as Deployments and Jobs, are composed of one or more Pods. To learn more, check out this explanation of Pods and Nodes.
+* Pods:  This is the basic unit for all of the workloads you run on Kubernetes. It is a group of one or more containers with shared storage, network and a specification for how to run. Containers in a pod:
+  - run on the same host and share Linux namespaces and cgroups
+  - share a network namespace, communicate via localhost within the pod and share an IP address and port space
+  - can communicate using standard inter-process communications like SystemV semaphores or POSIX shared memory
 
 *Common workload objects*
 
