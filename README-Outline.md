@@ -10,6 +10,7 @@
 
 - Topics to be ready to address:
 
+    * Architecture of Kubernets (see Pluralsight 3 hour Nigel course)
     * Docker integration
         - Docker networking expansion
             - [Container Network Model (CNM) design spec]()
