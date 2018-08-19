@@ -7,6 +7,7 @@ We'll go through the core operations with Kubernetes, which include:
 1. Create a deployment
     - scale
 1. Create a service
+1. Update app
     
 ## Setup: Set up a Kubernetes cluster
 
