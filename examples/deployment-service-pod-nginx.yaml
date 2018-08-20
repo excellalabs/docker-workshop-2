@@ -4,6 +4,8 @@ metadata:
   name: my-nginx-svc
   labels:
     app: nginx
+    zone: prod
+    version: v1
 spec:
   type: LoadBalancer
   ports:
