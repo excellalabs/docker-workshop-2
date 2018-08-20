@@ -179,6 +179,8 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
           name: my-nginx-svc
           labels:
             app: nginx
+            zone: prod
+            version: v1
         spec:
           type: LoadBalancer
           ports:
@@ -209,7 +211,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
     1. Run it directly from this file:
 
         ```bash
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml
+        kubectl apply -f https://github.com/excellalabs/docker-workshop-2/blob/master/examples/deployment-service-pod.yml
         ```
 
     You can now navigate to the page the Nginx is serving.
