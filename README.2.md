@@ -211,7 +211,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
     1. Run it directly from this file:
 
         ```bash
-        https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod.yml
+        https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-nginx.yaml
         ```
 
     You can now navigate to the page the Nginx is serving.
