@@ -2,7 +2,7 @@
 
 **TODO:**
 
-- change image used in deployment & service to be the same. Use a multi-container app if it's feasible for the timeframe.
+- change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
 - add step of creating deployment and service with manifest: put manifest into /examples folder and add apply/etc commands
     - put manifest files into this repo (/examples)
 - add step to deployment exercise to kill one and have it spin back up

@@ -148,13 +148,13 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-### Exercise: Run service with open port with kubectl
+### Exercise: Expose an app via a Service
 
 1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
 1. Watch them being started, `kubectl get pods -w`
 
-1. Create a ClusterIP service for the API port: `kubectl expose deploy/elastic --port 9200`
+1. Create a ClusterIP Service for the API port: `kubectl expose deploy/elastic --port 9200`
 
 1. Look at IP address allocated: `kubectl get svc`
 
@@ -166,7 +166,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ## Manifest files
 
-### Exercise: Create a deployment from a manifest file
+### Exercise: Deploy an app via a manifest file
 
 1. Create an nginx deployment & service via `Kubernetes manifest`:
 
@@ -218,7 +218,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 1. Display info about deployment: `kubectl describe deployment my-nginx`
 
-1. List the pods created by the deployment: `kubectl get pods -l app=nginx`
+1. List the pods created by the deployment via a label: `kubectl get pods -l app=nginx`
 
 1. Display information about a pod: `kubectl describe pod <pod-name>`
 
