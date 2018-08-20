@@ -33,7 +33,8 @@ Kubernetes runs and manages containerized applications on a cluster.
 
     Containers in a pod:
 
-      - run on the same host and share Linux namespaces and cgroups
+      - should be very tightly coupled
+      - run on the same node and share Linux namespaces and cgroups
       - share a network namespace, communicate via localhost within the pod and share an IP address and port space
       - can communicate using standard inter-process communications like SystemV semaphores or POSIX shared memory
       - not recommended to put multiple application tiers in the same pod, as they often are scaled and distributed independently

@@ -25,6 +25,8 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
 1. Go to [Play with K8's](https://labs.play-with-k8s.com/) and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
+    *NOTE: [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) is a great way to play with much of the Kubernetes functionality locally in a single node.*
+
 1. Try listing Kubernetes resources with
 
     ```bash
@@ -134,7 +136,7 @@ In general, users shouldn’t need to create pods directly. They should almost a
 
 1. Clean up your pods, `kubectl delete deploy/pingpong`
 
-## Overview: Kubernetes Services
+## Kubernetes Services
 
 A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Services expose your pod externally.
 

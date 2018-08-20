@@ -7,7 +7,9 @@
     - put manifest files into this repo (/examples)
 - add step to deployment exercise to kill one and have it spin back up
 - Add exercise for updating app
-- high level, what is the kubead command doing when it creates the cluster
+- flesh out key overivew of Deployments, Services and manifests above exercises
+- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes
+- high level, what is the kubeadm command doing when it creates the cluster
     - does this section need to be in our readme? More inf
 
         To start using your cluster, you need to run (as a regular user):
