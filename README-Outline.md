@@ -7,6 +7,16 @@
     - put manifest files into this repo (/examples)
 - add step to deployment exercise to kill one and have it spin back up
 - Add exercise for updating app
+- high level, what is the kubead command doing when it creates the cluster
+    - does this section need to be in our readme? More inf
+
+        To start using your cluster, you need to run (as a regular user):
+
+        mkdir -p $HOME/.kube
+        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+        sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+
 
 - Topics to be ready to address:
 
