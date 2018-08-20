@@ -112,7 +112,7 @@ A deployment manages the desired state, such as for specifying the number of pod
 
 ### Exercise: Create a deployment from a simgle image using kubectl
 
-The `kubectl run` command can create a deployment, which creates a pod (along with a ReplicaSet) with your container(s).
+The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
 
 In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments. 
 
@@ -142,7 +142,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ClusterIP` - a virtual IP address is allocated for the service (in an internal, private range) this IP address is reachable only from within the cluster (nodes and pods) our code can connect to the service using the original port number
 
-`NodePort` - a port is allocated for the service (by default, in the 30000-32768 range) that port is made available on all our nodes and anybody can connect to it our code must be changed to connect to that new port number
+`NodePort` - a port is allocated for the service (by default, in the 30000-32768 range). That port is made available on all nodes and anybody can connect to it.
 
 `LoadBalancer` - external load balancer allocated for the service
 
