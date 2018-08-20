@@ -198,12 +198,12 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
             metadata:
               labels:
                 app: nginx
-          spec:
-            containers:
-            - name: nginx
-              image: nginx:1.7.9
-              ports:
-              - containerPort: 80
+            spec:
+                containers:
+                - name: nginx
+                image: nginx:1.7.9
+                ports:
+                - containerPort: 80
         ```
     
     
