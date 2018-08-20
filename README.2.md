@@ -168,13 +168,45 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ### Exercise: Create a deployment from a manifest file
 
-1. Create an nginx deployment & service via `Kubernetes spec`:
+1. Create an nginx deployment & service via `Kubernetes manifest`:
 
-    1. Open this yaml file at this location: [nginx-app.yml](https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml)
+    1. Take a look at the following manifest file. This is a manifest file describing an Nginx deployment and can be run via `apply`.
+
+        ```
+        apiVersion: v1
+        kind: Service
+        metadata:
+          name: my-nginx-svc
+          labels:
+            app: nginx
+        spec:
+          type: LoadBalancer
+          ports:
+          - port: 80
+          selector:
+            app: nginx
+        ---
+        apiVersion: apps/v1beta1
+        kind: Deployment
+        metadata:
+          name: my-nginx
+        spec:
+          replicas: 3
+          template:
+            metadata:
+              labels:
+                app: nginx
+          spec:
+            containers:
+            - name: nginx
+              image: nginx:1.7.9
+              ports:
+              - containerPort: 80
+        ```
     
-    This is a manifest file describing an Nginx deployment and can be run via `apply`.
+    
 
-    1. Run it directly:
+    1. Run it directly from this file:
 
         ```bash
         kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/cn/docs/user-guide/nginx-app.yaml
