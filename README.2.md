@@ -114,7 +114,7 @@ The `kubectl run` command can create a deployment, which creates a pod (along wi
 
 In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments. 
 
-1. Createa a serivce:
+1. Create a Deployment:
 
     1. Run an alpine image with a ping commnad via a pod: `kubectl run pingpong --image alpine ping 8.8.8.8`
 

@@ -24,7 +24,7 @@ Kubernetes runs and manages containerized applications on a cluster.
 
 * Manifest (configuration) files:  Written in YAML or JSON, these files describe the desired state of your application in terms of Kubernetes API objects. A file can include one or more API object descriptions (manifests).
 
-* Pods: This is the basic unit for all of the workloads you run on Kubernetes. It is a group of one or more containers with shared storage, network and a specification for how to run. 
+* Pods: This is the basic unit for all of the workloads you run on Kubernetes. It is a wrapper around a group of one or more containers with shared storage, network and a specification for how to run. It represents processes that would run on the same server in the pre-container world. Pods do act like a single server.
 
     The motivations for pods include 
 
@@ -36,10 +36,11 @@ Kubernetes runs and manages containerized applications on a cluster.
       - run on the same host and share Linux namespaces and cgroups
       - share a network namespace, communicate via localhost within the pod and share an IP address and port space
       - can communicate using standard inter-process communications like SystemV semaphores or POSIX shared memory
+      - not recommended to put multiple application tiers in the same pod, as they often are scaled and distributed independently
 
     Colocation (co-scheduling), shared fate (e.g. termination), coordinated replication, resource sharing, and dependency management are handled automatically for containers in a pod.
 
-    Common Uses
+    Common uses of multi-container pods are sidecar containers (helpers to the main container, often an application container):
 
       - content management systems, file and data loaders, local cache managers, etc.
       - log and checkpoint backup, compression, rotation, snapshotting, etc.
