@@ -8,7 +8,7 @@
 - add step to deployment exercise to kill one and have it spin back up
 - Add exercise for updating app
 - flesh out key overivew of Deployments, Services and manifests above exercises
-- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes
+- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
 - high level, what is the kubeadm command doing when it creates the cluster
     - does this section need to be in our readme? More inf
 
