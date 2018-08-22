@@ -266,7 +266,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 * [Getting Started with Kubernetes - 2 hour course. Great architecture overview.](https://www.pluralsight.com/courses/getting-started-kubernetes)
 * [Kubernetes: Up and Running - great book that goes deep](http://shop.oreilly.com/product/0636920043874.do)
-* Kubernetes Docs - Concepts, Tasks, Tutorials](https://kubernetes.io/docs/concepts/)
+* [Kubernetes Docs - Concepts, Tasks, Tutorials](https://kubernetes.io/docs/concepts/)
 * [Deploy a stateful app in Kubernetes - MySQL](https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/#deploy-mysql)
 * [Scenario exercises](https://www.katacoda.com/courses/kubernetes)
 * [Kubernetes for Beginners interactive training](https://training.play-with-kubernetes.com/)
