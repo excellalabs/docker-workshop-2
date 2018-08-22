@@ -271,3 +271,4 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 * [Scenario exercises](https://www.katacoda.com/courses/kubernetes)
 * [Kubernetes for Beginners interactive training](https://training.play-with-kubernetes.com/)
 * [Kubernetes Cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet)
+* [Minikube for local playing](https://kubernetes.io/docs/tasks/tools/install-minikube/)
