@@ -97,6 +97,7 @@ They build on objects and provider additional functionality and convenience.
 * Deployment:  The most common way of running X copies (Pods) of your application. Supports rolling updates to your container images.
 
 * Service: By itself, a Deployment can’t receive traffic. Setting up a Service is one of the simplest ways to configure a Deployment to receive and loadbalance requests. Depending on the type of Service used, these requests can come from external client apps or be limited to apps within the same cluster. A Service is tied to a specific Deployment using label  selection.
+  - Services have a cluster-wide IP, DNS name and port
 
 *Additional concepts*
 

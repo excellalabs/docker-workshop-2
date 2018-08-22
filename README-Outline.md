@@ -2,7 +2,6 @@
 
 ## TODO
 
-- shorten prez for quick review of CM, and focus on ws w/ kube info
 - change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
 - add step of creating deployment and service with manifest: put manifest into /examples folder and add apply/etc commands
     - put manifest files into this repo (/examples)
