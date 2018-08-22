@@ -21,7 +21,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
 [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
 
-**Exercise: Set up the cluster**
+## **EXERCISE: Set up the cluster**
 
 1. Go to [Play with K8's](https://labs.play-with-k8s.com/) and log in. The servers have the Docker and Kubernetes tools installed but Kubernetes is not initialized.
 
@@ -86,7 +86,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. List services with `kubectl get services`
 
-## Exercise: Basic deployment
+## **EXERCISE: Basic deployment**
 
 1. We containered an app in Part 1, so we'll quickly spin that up and deploy it. Run:
 
@@ -108,11 +108,41 @@ Just like that you have an app running online. We could leave it like this, but 
 
 - Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
 
+## Object management: imperative vs declarative
+
+| Management technique | Operates on | Recommended environment |	Supported writers |	Learning curve |
+|---|---|---|---|---|
+| Imperative commands | Live objects | Development projects | 1+ | Lowest |
+| Imperative object configuration	| Individual files	| Production projects	| 1	| Moderate |
+| Declarative object configuration	| Directories of files |	Production projects	| 1+	| Highest |
+
+### Imperative Commands
+
+`kubectl run nginx --image nginx`
+
+Do the same thing using a different syntax:
+
+`kubectl create deployment nginx --image nginx`
+
+### Declarative Commands
+
+Create the objects defined in a configuration file:
+
+`kubectl create -f nginx.yaml`
+
+Delete the objects defined in two configuration files:
+
+`kubectl delete -f nginx.yaml -f redis.yaml`
+
+Update the objects defined in a configuration file by overwriting the live configuration:
+
+`kubectl replace -f nginx.yaml`
+
 ## Kubernetes Deployments
 
 A deployment manages the desired state, such as for specifying the number of pods. The *reconciliation loop* makes the desired state the actual state.
 
-### Exercise: Create a deployment from a simgle image using kubectl
+## **Exercise: Create a deployment from a simgle image using kubectl**
 
 The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
 
@@ -150,7 +180,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-### Exercise: Expose an app via a Service
+## **Exercise: Expose an app via a Service**
 
 1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
@@ -236,6 +266,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 * [Getting Started with Kubernetes - 2 hour course. Great architecture overview.](https://www.pluralsight.com/courses/getting-started-kubernetes)
 * [Kubernetes: Up and Running - great book that goes deep](http://shop.oreilly.com/product/0636920043874.do)
+* Kubernetes Docs - Concepts, Tasks, Tutorials](https://kubernetes.io/docs/concepts/)
 * [Deploy a stateful app in Kubernetes - MySQL](https://kubernetes.io/docs/tasks/run-application/run-single-instance-stateful-application/#deploy-mysql)
 * [Scenario exercises](https://www.katacoda.com/courses/kubernetes)
 * [Kubernetes for Beginners interactive training](https://training.play-with-kubernetes.com/)
