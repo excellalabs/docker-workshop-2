@@ -3,10 +3,12 @@
 ## TODO
 
 - change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
-- add step of creating deployment and service with manifest: put manifest into /examples folder and add apply/etc commands
-    - put manifest files into this repo (/examples)
-- add step to deployment exercise to kill one and have it spin back up
+- change sample deployment on first step to use something very light
 - Add exercise for updating app
+
+
+- add step to deployment exercise to kill one and have it spin back up
+
 - flesh out key overivew of Deployments, Services and manifests above exercises
 - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
 - high level, what is the kubeadm command doing when it creates the cluster
