@@ -10,7 +10,7 @@ Then we'll review Kubernetes concepts as we go through the workshop exercises.
 
 ## Using an orchestrator
 
-//TODO is this redundant to slides? 
+//TODO is this redundant to slides?
 
 No longer are applications always made up a a single process or a small number of processes across a handful of servers. They are being decomposed into individual services for a number of benefits. Different work comes from this, such as:
 
