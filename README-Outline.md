@@ -71,12 +71,19 @@ Workshop with/Kube concepts throughout
 
 ### Workshop
 
-- Exercises
+Part A:
+
+- Kubernetes concepts review
+- Exercises, with review of concept before each one
     - *SETUP:* Set up a Kubernetes cluster, the quick way for playing
-    - Build pod with multiple containers
+    - Deploy pod via deployment:
+        - Command line
+        - Manifest
         - Add service
-        - Add deployment
-        - Update image
-    - Delpoy to cluster
-    - Manage
-    - Add volume
+    - Update image
+    
+Part B: (future)
+
+- Exercises
+    - Add volume for stateful app
+    - deploy multi-container app
