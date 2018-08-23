@@ -1,15 +1,4 @@
-## Workshop: Kubernetes Basics
-
-We'll go through the core operations with Kubernetes, which include:
-
-1. Setting up a cluster
-1. Prepare an application to deploy
-1. Create a deployment
-    - scale
-1. Create a service
-1. Update app
-
-## Setup: Set up a Kubernetes cluster
+## SETUP: Create a Kubernetes cluster
 
 **Kubernetes Cluster Overview**
 

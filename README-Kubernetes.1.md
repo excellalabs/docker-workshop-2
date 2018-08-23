@@ -121,4 +121,4 @@ They build on objects and provider additional functionality and convenience.
 * kubectl - main CLI tool
 * kubeadm - CLI tool for managing Kubernetes clusters
 
-[Next](README.2.md)
+[NEXT](README.2.md)
