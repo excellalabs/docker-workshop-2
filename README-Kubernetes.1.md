@@ -28,7 +28,11 @@ Kubernetes uses persistent objects to manage its state, including:
   * resources available to those applications
   * policies around how those applications behave (i.e. restart, upgrades, fault-tolerance)
 
-Objects are a **record of intent** meaning once created, Kubernetes works to take this **desired state** to **actual state**. All objects have a *spec* and *status* field to record this state. They are created, deleted and updated through the Kubernetes (typically through the *kubectl* CLI), and the Kubernetes Control Plane manaages an object's actual state to match your supplied desired state.
+Objects are a **record of intent** meaning once created, Kubernetes works to take this **desired state** to **actual state**. 
+
+  *DIVE DEEPER*
+
+  All objects have a *spec* and *status* field to record this state. They are created, deleted and updated through the Kubernetes (typically through the *kubectl* CLI), and the Kubernetes Control Plane manaages an object's actual state to match your supplied desired state.
 
 **Kubernetes Control Plane**
 
@@ -36,11 +40,17 @@ The Control Plane consists of the follow processes. It carries out the work of g
 
   **Kubernetes Master**  
 
-  The master is responsible to achieving the desired state of your cluster through these processes: 
+  The master is responsible to achieving the desired state of your cluster through these processes:
 
   - *kube-apiserver*, which *validates and configures objects*
-  - *kube-controller-manager*, which *watches the state of the system through kube-apiserver (with control loops), and make necessary changes* though controllers (i.e. node, replication, endpoints, service account and token controllers)
-  - *kube-scheduler*, which *watches for newly created pods that aren't assigned to a node yet, and assigns them* based on individual and collective resource requirements, quality of service requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, deadlines, and so on
+  
+  - *kube-controller-manager*, which *watches the state of the system through kube-apiserver (with control loops), and make necessary changes* though controllers
+    
+    I.E: node, replication, endpoints, service account and token controllers)
+  
+  - *kube-scheduler*, which *watches for newly created pods that aren't assigned to a node yet, and assigns them*
+  
+    This is based on individual and collective resource requirements, quality of service requirements, hardware/software/policy constraints, affinity and anti-affinity specifications, data locality, inter-workload interference, deadlines, and so on
 
   **Kubernetes non-master nodes**
     

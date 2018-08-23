@@ -8,18 +8,18 @@ We'll go through the core operations with Kubernetes, which include:
     - scale
 1. Create a service
 1. Update app
-    
+
 ## Setup: Set up a Kubernetes cluster
 
 **Kubernetes Cluster Overview**
 
-The master is the machine where the control plane components run, including etcd (the cluster database) and the API server (which the kubectl CLI communicates with).
+The master is the machine where the control plane components run, including etcd (the cluster database) the API server (which the kubectl CLI communicates with) and the controller manager.
 
 To initialize the master, first choose the pod network plugin you want and check if it requires any parameters to be passed to kubeadm while initializing the cluster.
 
 kubeadm init will first run a series of pre-checks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
 
-[kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/). 
+[kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/).
 
 ## **EXERCISE: Set up the cluster**
 
@@ -50,7 +50,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 1. Join another node to cluster
 
     1. Copy the outputted block `kubeadm join...` from the init commnad
-    
+
     1. Go into another node's terminal and run that command to join it to the cluseter
 
     1. See that it joined, `kubectl get nodes`
@@ -61,15 +61,15 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     `kubeadm` by design does not install a networking solution for you, which means you have to install a third-party CNI-compliant networking solution yourself using `kubectl apply`. It expects to be pointed to a machine to work on. 
 
-    Run: 
-    
+    Run:
+
     ```bash
     kubectl apply -n kube-system -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     ```
-    
+
     [Read more about Networking Solutions](README-Networking.md)
 
-1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers). 
+1. Inspect the Kubernetes cluster. Kubernetes functionality is delivered as a series of Kubernetes services (containing pods, containing containers).
 
     1. Try to list the running containers via Kubernetes pods: `kubectl get pods`. Nothing shows up because it defaults in the default namespace, with has no pods. 
 
@@ -78,7 +78,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
     1. Get the pods from the namespace with the Kubernetes services: `kubectl -n kube-system get pods` and you will see the pods that deliver the containers with the Kubernetes functionality.
 
     1. Change the default namespace with 
-    
+
         ```
         kubectl config set-context my-context --namespace=mystuff
         kubectl config use-context my-context
@@ -100,13 +100,12 @@ When it says it's serving, you should see a link for `80` next to the local IP, 
 
 Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
 
-### Need for an orchestrator 
+### Need for an orchestrator
 
-- If the server reboots or Docker restarts, the container and app will shut down and not come back up. 
-- We also have to consider how we will monitor the health of the service and its logs, among other services deployed.  
+- If the server reboots or Docker restarts, the container and app will shut down and not come back up.
 - We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
 
-- Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.
+*Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.*
 
 ## Object management: imperative vs declarative
 
@@ -142,11 +141,11 @@ Update the objects defined in a configuration file by overwriting the live confi
 
 A deployment manages the desired state, such as for specifying the number of pods. The *reconciliation loop* makes the desired state the actual state.
 
-## **Exercise: Create a deployment from a simgle image using kubectl**
+## **EXERCISE: Create a deployment from a simgle image using kubectl**
 
 The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
 
-In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments. 
+In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments.
 
 1. Create a Deployment:
 
@@ -157,9 +156,9 @@ In general, users shouldn’t need to create pods directly. They should almost a
         - we created deploy/pingpong - the deployment that we just created, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
 
         - our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
-        
+
         - the replica set created po/pingpong-yyyy - a pod created by the replica sets
-    
+
 1. Run `kubectl logs deploy/pingpong --tail 1 --follow` to see the output.
 
 1. Scale by creating more copies of the pod: `kubectl scale deploy/pingpong --replicas 8`
@@ -180,7 +179,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
 
-## **Exercise: Expose an app via a Service**
+## **EXERCISE: Expose an app via a Service**
 
 1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
 
@@ -198,7 +197,7 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
 
 ## Manifest files
 
-### Exercise: Deploy an app via a manifest file
+### EXERCISE: Deploy an app via a manifest file
 
 1. Create an nginx deployment & service via `Kubernetes manifest`:
 
@@ -237,8 +236,8 @@ A service is a stable address for a pod/bunch of pods, used to connect to our po
                 ports:
                 - containerPort: 80
         ```
-    
-    
+
+
 
     1. Run it directly from this file:
 
