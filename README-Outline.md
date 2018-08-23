@@ -3,7 +3,7 @@
 ## TODO
 
 - final practice
-    - review slides and minimize
+    - review slides and minimize; brief run-through
     - review agenda (below)
     - review readme and go over presenting it and flow
         - perhaps move some info into sidebars, just to make going through it easier
