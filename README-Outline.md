@@ -4,9 +4,12 @@
 
 - final practice
     - review slides and minimize; brief run-through
+        - TODO in readme for redundancy vs slides
     - review agenda (below)
     - review readme and go over presenting it and flow
         - perhaps move some info into sidebars, just to make going through it easier
+        - gen slide deck from it
+        - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
     - review flow of exercises, do they build well on each other and do they support the right core concepts?
 - minikube & kube tutoral sandbox backup instructions
 - change image used in deployment & service to be the same. Add the service to the deployment to expose.
@@ -17,17 +20,15 @@
 
 ### If time
 
-- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
-- high level, what is the kubeadm command doing when it creates the cluster
-    - does this section need to be in our readme? More inf
-
-        To start using your cluster, you need to run (as a regular user):
-
-        mkdir -p $HOME/.kube
-        sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-        sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
 - add step to deployment exercise to kill one and have it spin back up
+
+- does this section need to be in our readme? More inf
+
+    To start using your cluster, you need to run (as a regular user):
+
+    mkdir -p $HOME/.kube
+    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+    sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## **Topics to be ready to address:**
 
