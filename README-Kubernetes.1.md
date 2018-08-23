@@ -1,7 +1,7 @@
 
 ## What is Kubernetes?
 
-Kubernetes runs and manages containerized applications on a cluster.
+Kubernetes runs and manages containerized applications on a cluster. It is great at making multiple servers (i.e. kernels) look like one, so you can deploy and manage deployed containers.
 
 *Basic things we can ask Kubernetes to do*
 
