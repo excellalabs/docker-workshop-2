@@ -10,8 +10,6 @@ Then we'll review Kubernetes concepts as we go through the workshop exercises.
 
 ## Using an orchestrator
 
-//TODO is this redundant to slides?
-
 No longer are applications always made up a a single process or a small number of processes across a handful of servers. They are being decomposed into individual services for a number of benefits. Different work comes from this, such as:
 
 - Need to manage many services spread across many servers, in such a way that effectively utilizes resources
@@ -32,6 +30,6 @@ We'll go through the core operations with Kubernetes, which include:
 1. Create a service
 1. Update app
 
-First, a quick review of Kubernetes... 
+First, a quick review of Kubernetes...
 
 [NEXT](README-Kubernetes.1.md)
