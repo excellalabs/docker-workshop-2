@@ -1,17 +1,21 @@
-# Workshop: Intro to Container Managment using Kubernetes
+# Workshop: Intro to Container Management using Kubernetes
 
 ## TODO
 
 - final practice
     - review slides and minimize
+    - review agenda (below)
     - review readme and go over presenting it and flow
         - perhaps move some info into sidebars, just to make going through it easier
-    - review flow of exervises, do they build well on each other and do they support the right core concepts?
+    - review flow of exercises, do they build well on each other and do they support the right core concepts?
 - minikube & kube tutoral sandbox backup instructions
-- change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
+- change image used in deployment & service to be the same. Add the service to the deployment to expose.
 - change sample deployment on first step to use something very light
 - Add exercise for updating app
 - flesh out key overivew of Deployments (mention object used?, update Services and manifests above exercises
+- Use a multi-container app if it's feasible for the timeframe (show pod-to-pod communication).
+
+### If time
 
 - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
 - high level, what is the kubeadm command doing when it creates the cluster
@@ -25,7 +29,7 @@
 
 - add step to deployment exercise to kill one and have it spin back up
 
-**Topics to be ready to address:**
+## **Topics to be ready to address:**
 
     * Architecture of Kubernets (see Pluralsight 3 hour Nigel course)
     * Docker integration
@@ -40,7 +44,7 @@
         * Google Kubernetes Engine
         * EKS, AKS
 
-## Agenda 
+## Agenda
 
 1.5 hours
 Lightning talk on container orchestration
