@@ -1,6 +1,6 @@
 # Workshop: Intro to Container Managment using Kubernetes
 
-**TODO:**
+## TODO
 
 - change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
 - add step of creating deployment and service with manifest: put manifest into /examples folder and add apply/etc commands
@@ -8,7 +8,7 @@
 - add step to deployment exercise to kill one and have it spin back up
 - Add exercise for updating app
 - flesh out key overivew of Deployments, Services and manifests above exercises
-- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes
+- put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
 - high level, what is the kubeadm command doing when it creates the cluster
     - does this section need to be in our readme? More inf
 
@@ -18,19 +18,26 @@
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
+**FINAL:**
+- review slides and minimize
+- review readme and go over presenting it and flow
+    - perhaps move some info into sidebars, just to make going through it easier
+- review flow of exervises, do they build well on each other and do they support the right core concepts?
 
-
-- Topics to be ready to address:
+**Topics to be ready to address:**
 
     * Architecture of Kubernets (see Pluralsight 3 hour Nigel course)
     * Docker integration
-        - Docker networking expansion
-            - [Container Network Model (CNM) design spec]()
-
+        * Docker networking expansion
+            * [Container Network Model (CNM) design spec]()
+        * metrics & monitoring tools (i.e. capturing resourecs used by containers)
     * Linux integratioons
-    * Windows kernal integations
+    * Windows kernal integations, Kubernetes on Windows
     * Maintain cluster in EC2, EKS, GCP
     * Set up cluster from scratch
+    * Managed Kuberntes vs not
+        * Google Kubernetes Engine
+        * EKS, AKS
 
 ## Agenda 
 
@@ -39,6 +46,7 @@ Lightning talk on container orchestration
 Workshop with/Kube concepts throughout
 
 ### Container Orchestration & Kubernets Lightning Talk
+
     - Container management outline:
         - Summary
             - Interaction with containers is inevidible
@@ -60,13 +68,14 @@ Workshop with/Kube concepts throughout
             - The Kubernetes way
                 - pods, in prod, volumes, networking
 
-## Workshop
+### Workshop
 
 - Exercises
     - *SETUP:* Set up a Kubernetes cluster, the quick way for playing
     - Build pod with multiple containers
         - Add service
         - Add deployment
+        - Update image
     - Delpoy to cluster
     - Manage
     - Add volume
