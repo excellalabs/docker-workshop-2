@@ -2,14 +2,17 @@
 
 ## TODO
 
+- final practice
+    - review slides and minimize
+    - review readme and go over presenting it and flow
+        - perhaps move some info into sidebars, just to make going through it easier
+    - review flow of exervises, do they build well on each other and do they support the right core concepts?
+- minikube & kube tutoral sandbox backup instructions
 - change image used in deployment & service to be the same. Add the service to the deployment to expose. Use a multi-container app if it's feasible for the timeframe.
 - change sample deployment on first step to use something very light
 - Add exercise for updating app
+- flesh out key overivew of Deployments (mention object used?, update Services and manifests above exercises
 
-
-- add step to deployment exercise to kill one and have it spin back up
-
-- flesh out key overivew of Deployments, Services and manifests above exercises
 - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
 - high level, what is the kubeadm command doing when it creates the cluster
     - does this section need to be in our readme? More inf
@@ -20,11 +23,7 @@
         sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
         sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-**FINAL:**
-- review slides and minimize
-- review readme and go over presenting it and flow
-    - perhaps move some info into sidebars, just to make going through it easier
-- review flow of exervises, do they build well on each other and do they support the right core concepts?
+- add step to deployment exercise to kill one and have it spin back up
 
 **Topics to be ready to address:**
 
