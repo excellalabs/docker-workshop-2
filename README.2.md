@@ -128,7 +128,12 @@ Update the objects defined in a configuration file by overwriting the live confi
 
 ## Kubernetes Deployments
 
-A deployment manages the desired state, such as for specifying the number of pods. The *reconciliation loop* makes the desired state the actual state.
+A quick note about *Replication Controller*. They manage the desired state, such as the number of pods. Deployments take this to a higher level, and wrap *RelicaSets* to provide the above plus:
+
+- Rolling updates
+- Seamless rollbacks
+
+You update the existing deployment and apply it, and Kubernetes creates a new ReplicaSet and spins up new pods and in conjunction removing the old. It keeps the old replica set revision, so if a rollback is needed it can easily spin up pods within there and remove the new ones.
 
 ## **EXERCISE: Create a deployment from a simgle image using kubectl**
 
@@ -158,15 +163,23 @@ In general, users shouldn’t need to create pods directly. They should almost a
 
 ## Kubernetes Services
 
-A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Services expose your pod externally.
+A service is a stable address for a pod/bunch of pods, used to connect to our pods. `kube-dns` will then allow us to resolve it by name. Services give your pods a reliable networking endpoint, and expose your pod(s) externally.
 
-`ClusterIP` - a virtual IP address is allocated for the service (in an internal, private range) this IP address is reachable only from within the cluster (nodes and pods) our code can connect to the service using the original port number
+The get an:
 
-`NodePort` - a port is allocated for the service (by default, in the 30000-32768 range). That port is made available on all nodes and anybody can connect to it.
+- IP address
+- DNS name
+- Port
 
-`LoadBalancer` - external load balancer allocated for the service
+`ClusterIP` - a virtual IP address is allocated for the service (in an internal, private range) this IP address is reachable only from within the cluster (nodes and pods) our code can connect to the service using the original port number. This is the default.
+
+`NodePort` - wraps ClusterIP with a port that is allocated for the service (by default, in the 30000-32768 range). That port is made available on all nodes that can be connected to outside the cluster.
+
+`LoadBalancer` - integrates NodePort with external load balancer
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
+
+//TODO load balancing among pods mention?
 
 ## **EXERCISE: Expose an app via a Service**
 
