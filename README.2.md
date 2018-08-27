@@ -158,9 +158,9 @@ The get an:
 
 1. Send some requests: `curl http://$IP:9200/`
 
-## **EXERCISE: Rolling update image**
+## **EXERCISE: Rolling update**
 
-We're going to update the elasticsearch image, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
+We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
 
 1. `kubectl set image deployment/elastic elastic=elasticsearch:5`
 
