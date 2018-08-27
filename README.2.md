@@ -105,7 +105,7 @@ Just like that you have an app running online. We could leave it like this, but 
 
 `kubectl run nginx --image nginx`
 
-Do the same thing using a different syntax:
+This creates a Deployment. Do the same thing using a different syntax:
 
 `kubectl create deployment nginx --image nginx`
 
@@ -139,7 +139,7 @@ The get an:
 
 `LoadBalancer` - integrates NodePort with external load balancer
 
-`ExternalName` the DNS entry managed by kube-dns will just be a CNAME
+`ExternalName` - the DNS entry managed by kube-dns will just be a CNAME
 
 ## **EXERCISE: Expose an app via a Service**
 
@@ -149,11 +149,20 @@ The get an:
 
 1. Create a ClusterIP Service for the API port: `kubectl expose deploy/elastic --port 9200`
 
+//TODO
+`kubectl expose deploy/elastic --type=NodePort`
+
 1. Look at IP address allocated: `kubectl get svc`
 
 1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
 
 1. Send some requests: `curl http://$IP:9200/`
+
+## **EXERCISE: Rolling update image**
+
+We're going to update the elasticsearch image, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
+
+1. `kubectl set image deployment/elastic elastic=elasticsearch:5`
 
 1. Clean up, `kubectl delete deploy/elastic`
 
