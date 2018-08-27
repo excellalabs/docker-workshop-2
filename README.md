@@ -19,9 +19,7 @@ Kubernetes abstracts away the hardware infrastructure and can expose a cluster o
 
 We will set up Kubernetes and use it to deploy instead of Docker directly.
 
-All orchestrators share core concepts around wrapping containers for more management, i.e.:
-
-We'll go through the core operations with Kubernetes, which include:
+## Agenda
 
 1. Setting up a cluster
 1. Prepare an application to deploy

@@ -135,7 +135,7 @@ A quick note about *Replication Controller*. They manage the desired state, such
 
 You update the existing deployment and apply it, and Kubernetes creates a new ReplicaSet and spins up new pods and in conjunction removing the old. It keeps the old replica set revision, so if a rollback is needed it can easily spin up pods within there and remove the new ones.
 
-## **EXERCISE: Create a deployment from a simgle image using kubectl**
+## **EXERCISE: Create a deployment from a simple image using kubectl**
 
 The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
 
@@ -178,8 +178,6 @@ The get an:
 `LoadBalancer` - integrates NodePort with external load balancer
 
 `ExternalName` the DNS entry managed by kube-dns will just be a CNAME
-
-//TODO load balancing among pods mention?
 
 ## **EXERCISE: Expose an app via a Service**
 

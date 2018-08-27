@@ -1,7 +1,7 @@
 
 ## What is Kubernetes?
 
-Kubernetes runs and manages containerized applications on a cluster. It is great at making multiple servers (i.e. kernels) look like one, so you can deploy and manage deployed containers.
+Kubernetes is an orchestrator. It runs and manages containerized applications on a cluster. It is great at making multiple servers (i.e. kernels) look like one, so you can deploy and manage deployed containers.
 
 *Basic things we can ask Kubernetes to do*
 
@@ -30,7 +30,7 @@ Kubernetes uses persistent objects to manage its state, including:
 
 Objects are a **record of intent** meaning once created, Kubernetes works to take this **desired state** to **actual state**. 
 
-  *DIVE DEEPER*
+## DIVE DEEPER
 
   All objects have a *spec* and *status* field to record this state. They are created, deleted and updated through the Kubernetes (typically through the *kubectl* CLI), and the Kubernetes Control Plane manaages an object's actual state to match your supplied desired state.
 
@@ -81,7 +81,9 @@ They build on objects and provider additional functionality and convenience.
 
 * Pods: This is the basic unit for all of the workloads you run on Kubernetes. It is a wrapper around a group of one or more containers with shared storage, network and a specification for how to run. It represents processes that would run on the same server in the pre-container world. Pods do act like a single server.
 
-    The motivations for pods include 
+**DIVE DEEPER**
+
+    The motivations for pods include:
 
     - simplfying application deployment and management
     - resource sharing and communication.
