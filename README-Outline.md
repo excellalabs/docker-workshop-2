@@ -7,7 +7,7 @@
     - review readme and go over presenting it and flow
         - clean up readme with deep dive section-offs 
     - review flow of exercises, do they build well on each other and do they support the right core concepts?
-
+        - service before deployment like NP? How do exercises with 1 image adding on flow?
 - beef up cli core command examples/exercises
 - backup instructions
     - minikube

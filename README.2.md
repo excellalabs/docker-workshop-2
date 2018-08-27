@@ -66,14 +66,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. Get the pods from the namespace with the Kubernetes services: `kubectl -n kube-system get pods` and you will see the pods that deliver the containers with the Kubernetes functionality.
 
-    1. Change the default namespace with 
-
-        ```
-        kubectl config set-context my-context --namespace=mystuff
-        kubectl config use-context my-context
-        ```
-
-    1. List services with `kubectl get services`
+    1. Now check out all the objects in the kube-system namespace on a default Kubernetes cluster by typing `kubectl -n kube-system get all`
 
 ## **EXERCISE: Basic deployment**
 
