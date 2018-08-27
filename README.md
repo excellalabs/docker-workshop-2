@@ -4,7 +4,7 @@ In this workshop, we will take a containerized application, and go through basic
 
 We'll be using Kubernetes since it has become the de facto container orchestrator.
 
-Following is a brief overview of container management and Kubernetes concepts. It is just to review for the workshop. Slides for an overview of container orchestration are [here](https://drive.google.com/file/d/1yaUfuSBkgzl9s7KcGLNogJX2if5w04ri/view?usp=sharing)
+Following is a brief overview of container management and Kubernetes concepts. It is just to review for the workshop. Slides for an overview of container orchestration are [here](https://drive.google.com/open?id=150b-NPLbwBCTcecGoVon2LYWCD6aVh0Y)
 
 Then we'll review Kubernetes concepts as we go through the workshop exercises.
 

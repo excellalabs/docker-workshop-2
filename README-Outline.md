@@ -11,6 +11,7 @@
         - gen slide deck from it
         - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
     - review flow of exercises, do they build well on each other and do they support the right core concepts?
+
 - minikube & kube tutoral sandbox backup instructions
 - change image used in deployment & service to be the same. Add the service to the deployment to expose.
 - change sample deployment on first step to use something very light
