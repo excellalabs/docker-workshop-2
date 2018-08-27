@@ -96,7 +96,11 @@ Just like that you have an app running online. We could leave it like this, but 
 
 *Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.*
 
-## Object management: imperative vs declarative
+## Object management
+
+`kubectl <operation> <object> <resource name> <optional flags>`
+
+### Imperative vs declarative
 
 | Management technique | Operates on | Recommended environment |	Supported writers |	Learning curve |
 |---|---|---|---|---|

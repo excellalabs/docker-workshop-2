@@ -3,24 +3,23 @@
 ## TODO
 
 - final practice
-    - review slides and minimize; brief run-through
-        - TODO in readme for redundancy vs slides
     - review agenda (below)
     - review readme and go over presenting it and flow
-        - perhaps move some info into sidebars, just to make going through it easier
-        - gen slide deck from it
-        - put in some diagrams for cluster architecture, pods, pod lifecycle, deployments, services, networking volumes, controllers, repl controller, etc wrap (see ps arch)
+        - clean up readme with deep dive section-offs 
     - review flow of exercises, do they build well on each other and do they support the right core concepts?
 
-- minikube & kube tutoral sandbox backup instructions
+- beef up cli core command examples/exercises
+- backup instructions
+    - minikube
+    - kube tutoral sandbox backup instructions
+    - GCP instructions
 - change image used in deployment & service to be the same. Add the service to the deployment to expose.
 - change sample deployment on first step to use something very light
 - Add exercise for updating app
-- flesh out key overivew of Deployments (mention object used?, update Services and manifests above exercises
-- Use a multi-container app if it's feasible for the timeframe (show pod-to-pod communication).
 
 ### If time
 
+- Use a multi-container app if it's feasible for the timeframe (show pod-to-pod communication).
 - add step to deployment exercise to kill one and have it spin back up
 
 - does this section need to be in our readme? More inf
@@ -34,6 +33,7 @@
 ## **Topics to be ready to address:**
 
     * Architecture of Kubernets (see Pluralsight 3 hour Nigel course)
+    * Objects in API, concepts, etc in Docs
     * Docker integration
         * Docker networking expansion
             * [Container Network Model (CNM) design spec]()
@@ -45,6 +45,7 @@
     * Managed Kuberntes vs not
         * Google Kubernetes Engine
         * EKS, AKS
+    * Fargate
 
 ## Agenda
 
