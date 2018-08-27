@@ -149,9 +149,6 @@ The get an:
 
 1. Create a ClusterIP Service for the API port: `kubectl expose deploy/elastic --port 9200`
 
-//TODO
-`kubectl expose deploy/elastic --type=NodePort`
-
 1. Look at IP address allocated: `kubectl get svc`
 
 1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
