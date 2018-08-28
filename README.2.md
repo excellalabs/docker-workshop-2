@@ -165,6 +165,8 @@ We're going to update the elasticsearch image our containers are using, in this 
 
 1. Check the status of the updates with `kubectl describe deploy docker-hello-api`
 
+1. Check the status of the updates with `kubectl 
+
 1. Clean up, `kubectl delete deploy/hello`
 
 ## Kubernetes Deployments
