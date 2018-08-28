@@ -9,7 +9,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8000
+  - port: 80
   selector:
     app: docker-hello-api
 ---
@@ -26,6 +26,6 @@ spec:
     spec:
       containers:
       - name: docker-hello-api
-        image: docker-hello-api:1
+        image: wyntuition/docker-hello-api:1
         ports:
-        - containerPort: 80
+        - containerPort: 8000
