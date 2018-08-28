@@ -7,7 +7,7 @@ metadata:
     zone: prod
     version: v1
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: 80
   selector:
@@ -16,7 +16,7 @@ spec:
 apiVersion: apps/v1beta1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: docker-hello-api
 spec:
   replicas: 3
   template:
