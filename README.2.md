@@ -159,7 +159,7 @@ The get an:
 
 1. Expose the application externally: `kubectl expose deploy/docker-hello-api --name=docker-hello-api-2 --type=LoadBalancer --port=8000 --target-port=8000`
 
-1. Check the External IP: `kubectl get svc docker-hello-api-2`
+1. Check the External IP: `kubectl get svc docker-hello-api-2`.  On Play with K8, this will say `Pending`, but with AWS and GKE, you will get an external IP address.
 
 ## **EXERCISE: Rolling update**
 
