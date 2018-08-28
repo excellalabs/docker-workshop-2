@@ -151,7 +151,7 @@ The get an:
 
 1. Look at IP address allocated: `kubectl get svc`
 
-1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
+1. Get the IP address of the service: `IP=$(kubectl get svc hello -o go-template --template '{{ .spec.clusterIP }}')`
 
 1. Send some requests: `curl http://$IP:8000/`
 
