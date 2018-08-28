@@ -16,6 +16,9 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     *NOTE: [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) is a great way to play with much of the Kubernetes functionality locally in a single node.*
 
+    *If Play with K8s is overloading/not working, you can use kubernetes.io's [interactive tutorial sandbox](https://kubernetes.io/docs/tutorials/kubernetes-basics/deploy-app/deploy-interactive/) which already has a cluster set up.*
+
+
 1. Try listing Kubernetes resources with
 
     ```bash
