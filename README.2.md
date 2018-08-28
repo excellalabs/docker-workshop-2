@@ -73,32 +73,13 @@ kubectl is the main CLI you use to interface with the Kubernetes API and do most
 
     1. Now check out all the objects in the kube-system namespace on a default Kubernetes cluster by typing `kubectl -n kube-system get all`
 
-## **EXERCISE: Basic deployment**
-
-1. We containered an app in Part 1, so we'll quickly spin that up and deploy it. Run:
-
-    ```bash
-    git clone https://github.com/excellalabs/docker-workshop-1
-    ```
-
-1. Change into the docker-workshop 1 directory and run `docker-compose up`
-
-When it says it's serving, you should see a link for `80` next to the local IP, which you can click on for the public url. Add `/api/values` on the end and viola!
-
-Just like that you have an app running online. We could leave it like this, but it would not be very stable. There are many additional things to cover when getting it production-ready.
-
-### Need for an orchestrator
-
-- If the server reboots or Docker restarts, the container and app will shut down and not come back up.
-- We don't have a straightforward way to manage the scaling, deployment and communication of multiple containers across machines.
-
-*Wrap containers with extra layer(s) for additional services such as self-healing, logging, deployment management, etc.*
-
 ## Object management
 
 `kubectl <operation> <object> <resource name> <optional flags>`
 
 ### Imperative vs declarative
+
+You want to to use declarative format (yaml) for production, so you can describe and version your infrastructure.
 
 | Management technique | Operates on | Recommended environment |	Supported writers |	Learning curve |
 |---|---|---|---|---|
@@ -110,9 +91,7 @@ Just like that you have an app running online. We could leave it like this, but 
 
 `kubectl run nginx --image nginx`
 
-This creates a Deployment. Do the same thing using a different syntax:
-
-`kubectl create deployment nginx --image nginx`
+This creates a Deployment.
 
 ### Declarative Commands
 
@@ -146,7 +125,7 @@ The get an:
 
 `ExternalName` - the DNS entry managed by kube-dns will just be a CNAME
 
-## **EXERCISE: Expose an app via a Service**
+## **EXERCISE: Deploy an app via a Deployment**
 
 1. Start some hello world containers, `kubectl run docker-hello-api --image=wyntuition/docker-hello-api:1 --replicas=3`
 
@@ -154,25 +133,39 @@ The get an:
 
 1. Watch them being started, `kubectl get pods -w`
 
+This command deployed your app by creating a pod to put your container in, and then a deployment to manage it in production, ensuring the desired number of replicas are available.
+
+## **EXERCISE: Expose your app via Service**
+
+Now that we have an app deployed to Kubernetes via a Deployment, we want to make it accessible.
+
 1. Create a ClusterIP Service for the API port: `kubectl expose deploy/docker-hello-api --port 8000`
 
 1. Look at IP address allocated: `kubectl get svc`
 
-1. Get the IP address of the service: `IP=$(kubectl get svc docker-hello-api -o go-template --template '{{ .spec.clusterIP }}')`
+1. Get the IP address: `IP=$(kubectl get svc docker-hello-api -o go-template --template '{{ .spec.clusterIP }}')`
 
-1. Send some requests: `curl http://$IP:8000/`
+1. Send some requests to it: `curl http://$IP:8000/`
+
+Now the app is accessible from anywhere within the cluster, but we must do the following to expose it outside:
 
 1. Expose the application externally: `kubectl expose deploy/docker-hello-api --name=docker-hello-api-2 --type=LoadBalancer --port=8000 --target-port=8000`
 
-1. Check the External IP: `kubectl get svc docker-hello-api-2`.  On Play with K8, this will say `Pending`, but with AWS and GKE, you will get an external IP address.
+1. Check the External IP: `kubectl get svc docker-hello-api-2`
+
+    On Play with K8, this will say *pending*, but with AWS and GKE, you will get an external IP address.
 
 ## **EXERCISE: Rolling update**
 
-We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
+We're going to update the image our containers are using to a newer one (which is on Docker Hub):
 
-1. `kubectl set image deployment/docker-hello-api docker-hello-api=wyntuition/docker-hello-api:2`
+1. `kubectl set image deploy/docker-hello-api docker-hello-api=wyntuition/docker-hello-api:2`
 
 1. Check the status of the updates with `kubectl describe deploy docker-hello-api`
+
+1. Browse to the app again and see that it updated.
+
+We should now remove our app, so we can deploy it again using the production-preferred method - declarative state.
 
 1. Clean up Deployment, `kubectl delete deploy/docker-hello-api`
 
@@ -180,7 +173,7 @@ We're going to update the elasticsearch image our containers are using, in this 
 
 ## Kubernetes Deployments
 
-A quick note about *Replication Controller*. They manage the desired state, such as the number of pods. Deployments take this to a higher level, and wrap *RelicaSets* to provide the above plus:
+Deployments manage the desired state, such as the number of pods by wrapping *RelicaSets*. Additionally they provide:
 
 - Rolling updates
 - Seamless rollbacks
@@ -189,7 +182,7 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
 ## Manifest files
 
-### EXERCISE: Deploy an app via a manifest file
+## **EXERCISE: Deploy an app via a manifest file**
 
 1. Create a  deployment & service via `Kubernetes manifest`:
 
@@ -237,21 +230,25 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
          kubectl apply -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-hello-api.yaml
         ```
 
-    You can now navigate to the page.
+    The app is now deployed just like it was after you went through the last steps. You can now navigate to the page.
 
-1. Display info about deployment: `kubectl describe deploy docker-hello-api`
+    Now you can examine your deployment in more depth:
 
-1. List the pods created by the deployment via a label: `kubectl get pods -l app=docker-hello-api`
+    1. Display info about deployment: `kubectl describe deploy docker-hello-api`
 
-1. Display information about a pod: `kubectl describe pod <pod-name>`
+    1. List the pods created by the deployment via a label: `kubectl get pods -l app=docker-hello-api`
 
-1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
+    1. Display information about a pod: `kubectl describe pod <pod-name>`
 
-1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 8`
+    1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
+
+## **EXERCISE: Scale your app**
+
+1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 5`
 
 1. Go to node2 and do `docker ps` to see all the containers running there.
 
-1. Clean up your pods, `kubectl delete wyntuition/docker-hello-api`
+1. Clean up your app by running a *delete* command against the manifest you used to deploy, `kubectl delete -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-hello-api.yaml`
 
 ## Next steps to production...
 
