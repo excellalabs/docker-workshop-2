@@ -205,7 +205,7 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
         spec:
           type: NodePort
           ports:
-          - port: 80
+          - port: 8000
           selector:
             app: docker-hello-api
         ---
