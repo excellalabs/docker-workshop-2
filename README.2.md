@@ -157,6 +157,8 @@ The get an:
 
 1. Send some requests: `curl http://$IP:8000/`
 
+1. Expose the application externally: `kubectl expose deploy/hello --name=hello2 --type=LoadBalancer --port=8000 --target-port=8000`
+
 ## **EXERCISE: Rolling update**
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
