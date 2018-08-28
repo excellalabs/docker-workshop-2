@@ -143,17 +143,17 @@ The get an:
 
 ## **EXERCISE: Expose an app via a Service**
 
-1. Start some hello world containers, `kubectl run hello --image=wyntuition/docker-hello-api:1 --replicas=3`
+1. Start some hello world containers, `kubectl run docker-hello-api --image=wyntuition/docker-hello-api:1 --replicas=3`
 
     The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
 
 1. Watch them being started, `kubectl get pods -w`
 
-1. Create a ClusterIP Service for the API port: `kubectl expose deploy/hello --port 8000`
+1. Create a ClusterIP Service for the API port: `kubectl expose deploy/docker-hello-api --port 8000`
 
 1. Look at IP address allocated: `kubectl get svc`
 
-1. Get the IP address of the service: `IP=$(kubectl get svc hello -o go-template --template '{{ .spec.clusterIP }}')`
+1. Get the IP address of the service: `IP=$(kubectl get svc docker-hello-api -o go-template --template '{{ .spec.clusterIP }}')`
 
 1. Send some requests: `curl http://$IP:8000/`
 
@@ -161,11 +161,13 @@ The get an:
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
 
-1. `kubectl set image deployment/hello hello=wyntuition/docker-hello-api:2`
+1. `kubectl set image deployment/docker-hello-api hello=wyntuition/docker-hello-api:2`
 
-1. Check the status of the updates with `kubectl 
+1. Check the status of the updates with `kubectl` 
 
-1. Clean up, `kubectl delete deploy/hello`
+1. Clean up, `kubectl delete deploy/docker-hello-api`
+
+1. Clean up, `kubectl delete service docker-hello-api`
 
 ## Kubernetes Deployments
 
