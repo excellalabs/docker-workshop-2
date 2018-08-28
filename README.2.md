@@ -161,13 +161,13 @@ The get an:
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
 
-1. `kubectl set image deployment/docker-hello-api hello=wyntuition/docker-hello-api:2`
+1. `kubectl set image deployment/docker-hello-api docker-hello-api=wyntuition/docker-hello-api:2`
 
-1. Check the status of the updates with `kubectl` 
+1. Check the status of the updates with `kubectl describe deploy docker-hello-api`
 
-1. Clean up, `kubectl delete deploy/docker-hello-api`
+1. Clean up Deployment, `kubectl delete deploy/docker-hello-api`
 
-1. Clean up, `kubectl delete service docker-hello-api`
+1. Clean up Service, `kubectl delete service docker-hello-api`
 
 ## Kubernetes Deployments
 
@@ -182,9 +182,9 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
 ### EXERCISE: Deploy an app via a manifest file
 
-1. Create an nginx deployment & service via `Kubernetes manifest`:
+1. Create a  deployment & service via `Kubernetes manifest`:
 
-    1. Take a look at the following manifest file. This is a manifest file describing an Nginx deployment and can be run via `apply`.
+    1. Take a look at the following manifest file. This is a manifest file describing a deployment of a hello world API and can be run via `apply`.
 
         ```
         apiVersion: v1
@@ -230,19 +230,13 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
     You can now navigate to the page.
 
-1. Display info about deployment: `kubectl describe deployment docker-hello-api`
+1. Display info about deployment: `kubectl describe deploy docker-hello-api`
 
 1. List the pods created by the deployment via a label: `kubectl get pods -l app=docker-hello-api`
 
 1. Display information about a pod: `kubectl describe pod <pod-name>`
 
-        - we created a deployment, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
-
-        - our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
-
-        - the replica set created po/pingpong-yyyy - a pod created by the replica sets
-
-1. Run `kubectl logs wyntuition/docker-hello-api --tail 1 --follow` to see the output.
+1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
 
 1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 8`
 
