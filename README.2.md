@@ -197,34 +197,34 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
         apiVersion: v1
         kind: Service
         metadata:
-          name: docker-hello-api
-          labels:
+        name: docker-hello-api
+        labels:
             app: docker-hello-api
             zone: prod
             version: v1
         spec:
-          type: LoadBalancer
-          ports:
-          - port: 8000
-          selector:
+        type: LoadBalancer
+        ports:
+        - port: 80
+        selector:
             app: docker-hello-api
         ---
         apiVersion: apps/v1beta1
         kind: Deployment
         metadata:
-          name: docker-hello-api
+        name: docker-hello-api
         spec:
-          replicas: 3
-          template:
+        replicas: 3
+        template:
             metadata:
-              labels:
-                app: nginx
+            labels:
+                app: docker-hello-api
             spec:
-                containers:
-                - name: docker-hello-api
+            containers:
+            - name: docker-hello-api
                 image: wyntuition/docker-hello-api:1
                 ports:
-                - containerPort: 80
+                - containerPort: 8000
         ```
 
 
