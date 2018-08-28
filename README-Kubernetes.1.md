@@ -77,41 +77,50 @@ They build on objects and provider additional functionality and convenience.
 
 ## Common Objects
 
-* Manifest (configuration) files:  Written in YAML or JSON, these files describe the desired state of your application in terms of Kubernetes API objects. A file can include one or more API object descriptions (manifests).
+### Manifest (configuration) files  
 
-* Pods: This is the basic unit for all of the workloads you run on Kubernetes. It is a wrapper around a group of one or more containers with shared storage, network and a specification for how to run. It represents processes that would run on the same server in the pre-container world. Pods do act like a single server.
+Written in YAML or JSON, these files describe the desired state of your application in terms of Kubernetes API objects. A file can include one or more API object descriptions (manifests).
 
-**DIVE DEEPER**
+### Pods
 
-    The motivations for pods include:
+This is the basic unit for all of the workloads you run on Kubernetes. It is a wrapper around a group of one or more containers with shared storage, network and a specification for how to run. It represents processes that would run on the same server in the pre-container world. Pods do act like a single server.
 
-    - simplfying application deployment and management
-    - resource sharing and communication.
+  **DIVE DEEPER: Pods**
 
-    Containers in a pod:
+  The motivations for pods include:
 
-    - should be very tightly coupled
-    - run on the same node and share Linux namespaces and cgroups
-    - share a network namespace, communicate via localhost within the pod and share an IP address and port space
-    - can communicate using standard inter-process communications like SystemV semaphores or POSIX shared memory
-    - not recommended to put multiple application tiers in the same pod, as they often are scaled and distributed independently
+  - simplfying application deployment and management
+  - resource sharing and communication.
 
-    Colocation (co-scheduling), shared fate (e.g. termination), coordinated replication, resource sharing, and dependency management are handled automatically for containers in a pod.
+  Containers in a pod:
 
-    Common uses of multi-container pods are sidecar containers (helpers to the main container, often an application container):
+  - should be very tightly coupled
+  - run on the same node and share Linux namespaces and cgroups
+  - share a network namespace, communicate via localhost within the pod and share an IP address and port space
+  - can communicate using standard inter-process communications like SystemV semaphores or POSIX shared memory
+  - not recommended to put multiple application tiers in the same pod, as they often are scaled and distributed independently
 
-    - content management systems, file and data loaders, local cache managers, etc.
-    - log and checkpoint backup, compression, rotation, snapshotting, etc.
-    - data change watchers, log tailers, logging and monitoring adapters, event publishers, etc.
-    - proxies, bridges, and adapters
-    - controllers, managers, configurators, and updaters
+  Colocation (co-scheduling), shared fate (e.g. termination), coordinated replication, resource sharing, and dependency management are handled automatically for containers in a pod.
 
-* Service: By itself, a Deployment can’t receive traffic. Setting up a Service is one of the simplest ways to configure a Deployment to receive and loadbalance requests. Depending on the type of Service used, these requests can come from external client apps or be limited to apps within the same cluster. A Service is tied to a specific Deployment using label  selection.
-  - Services have a cluster-wide IP, DNS name and port
+  Common uses of multi-container pods are sidecar containers (helpers to the main container, often an application container):
 
-* Deployment:  The most common way of running X copies (Pods) of your application. Supports rolling updates to your container images.
+  - content management systems, file and data loaders, local cache managers, etc.
+  - log and checkpoint backup, compression, rotation, snapshotting, etc.
+  - data change watchers, log tailers, logging and monitoring adapters, event publishers, etc.
+  - proxies, bridges, and adapters
+  - controllers, managers, configurators, and updaters
 
-*Additional concepts*
+### Services
+
+By itself, a Deployment can’t receive traffic. Setting up a Service is one of the simplest ways to configure a Deployment to receive and loadbalance requests. Depending on the type of Service used, these requests can come from external client apps or be limited to apps within the same cluster. A Service is tied to a specific Deployment using label  selection.
+  
+Services have a cluster-wide IP, DNS name and port
+
+### Deployments
+
+The most common way of running X copies (Pods) of your application. Supports rolling updates to your container images.
+
+### Additional concept
 
 * Master - normally doesn't run containers, but the key Kubernetes services
 * Nodes - non-master servers that run containers (in pods)
