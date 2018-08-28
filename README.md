@@ -24,11 +24,12 @@ We will set up Kubernetes and use it to deploy instead of Docker directly.
 ## Agenda
 
 1. Setting up a cluster
-1. Prepare an application to deploy
-1. Create a deployment
-    - scale
-1. Create a service
-1. Update app
+1. Deploy a containerized application
+    1. Create a deployment
+    1. Create a service
+    1. Scale our application
+    1. Deploy application declaratively
+1. Update the application
 
 First, a quick review of Kubernetes...
 
