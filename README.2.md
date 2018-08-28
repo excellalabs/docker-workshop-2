@@ -203,7 +203,7 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
             zone: prod
             version: v1
         spec:
-          type: NodePort
+          type: LoadBalancer
           ports:
           - port: 8000
           selector:
