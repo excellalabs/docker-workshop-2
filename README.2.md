@@ -270,3 +270,4 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 * [Kubernetes Cheatsheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet)
 * [Minikube for local playing](https://kubernetes.io/docs/tasks/tools/install-minikube/)
 * [Kubernetes API v1.11](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.11/)
+* [Kubernetes Developer Guide](https://kubernetes.io/docs/community/devel/)
