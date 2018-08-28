@@ -137,6 +137,16 @@ The get an:
 
 This command deployed your app by creating a pod to put your container in, and then a deployment to manage it in production, ensuring the desired number of replicas are available.
 
+1. To illustrate that a Deployment keeps your desired state (i.e. number of instances running), delete a pod and see what happens. First list your pods:
+
+    `kubectl get pods`
+
+1. Now copy one of your pod's names, and delete it with:
+
+    `kubectl delete <pod name>`
+
+1. Now list your pods again, and see how the one you deleted in terminating, however a new one was spun up to get your cluster back to your specified desired state, `kubectl get pods`
+
 ## **EXERCISE: Expose your app via Service**
 
 Now that we have an app deployed to Kubernetes via a Deployment, we want to make it accessible.
@@ -161,7 +171,7 @@ Now the app is accessible from anywhere within the cluster, but we must do the f
 
 1. Scale by creating more copies of the pod via by declaraton in the manifest.
 
-    `kubectl scale wyntuition/docker-hello-api --replicas 5`
+    `kubectl scale deploy/docker-hello-api --replicas 5`
 
 1. Go to node2 and do `docker ps` to see all the containers running there.
 
