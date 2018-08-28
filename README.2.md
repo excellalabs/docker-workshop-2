@@ -165,8 +165,6 @@ Now the app is accessible from anywhere within the cluster, but we must do the f
 
 1. Go to node2 and do `docker ps` to see all the containers running there.
 
-    (You could try autoscalaing with `kubectl autoscale deploy/docker-hello-api --min=3 --max=5`)
-
 ## **EXERCISE: Rolling update**
 
 We're going to update the image our containers are using to a newer one (which is on Docker Hub):
