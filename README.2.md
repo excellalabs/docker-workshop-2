@@ -165,8 +165,6 @@ We're going to update the elasticsearch image our containers are using, in this 
 
 1. Check the status of the updates with `kubectl describe deploy docker-hello-api`
 
-1. Check the status of the updates with `kubectl 
-
 1. Clean up, `kubectl delete deploy/hello`
 
 ## Kubernetes Deployments
@@ -236,7 +234,7 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
 1. Display information about a pod: `kubectl describe pod <pod-name>`
 
-1. Run `kubectl logs wyntuition/docker-hello-api --tail 1 --follow` to see the output.
+1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
 
 1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 8`
 
