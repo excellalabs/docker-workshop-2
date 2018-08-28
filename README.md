@@ -8,6 +8,8 @@ Following is a brief overview of container management and Kubernetes concepts. I
 
 Then we'll review Kubernetes concepts as we go through the workshop exercises.
 
+This workshop can be self-guided.
+
 ## Using an orchestrator
 
 No longer are applications always made up a a single process or a small number of processes across a handful of servers. They are being decomposed into individual services for a number of benefits. Different work comes from this, such as:
