@@ -1,6 +1,6 @@
 ## SETUP: Create a Kubernetes cluster
 
-**Kubernetes Cluster Overview**
+**Kubernetes Cluster Overview: kubeadm & kubectl**
 
 The master is the machine where the control plane components run, including etcd (the cluster database) the API server (which the kubectl CLI communicates with) and the controller manager.
 
@@ -9,6 +9,8 @@ To initialize the master, first choose the pod network plugin you want and check
 kubeadm init will first run a series of pre-checks to ensure that the machine is ready to run Kubernetes. It will expose warnings and exit on errors. It will then download and install the cluster database and control plane components.
 
 [kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/) is a toolkit that helps you bootstrap a best-practice Kube cluster in an easy, reasonably secure and extensible way. It's aim to to set up a minimum viable cluster that passes the [Kubernetes Conformance tests](https://kubernetes.io/blog/2017/10/software-conformance-certification/).
+
+kubectl is the main CLI you use to interface with the Kubernetes API and do most operations.
 
 ## **EXERCISE: Set up the cluster**
 
@@ -45,7 +47,7 @@ kubeadm init will first run a series of pre-checks to ensure that the machine is
 
     1. Go into another node's terminal and run that command to join it to the cluseter
 
-    1. See that it joined, `kubectl get nodes`
+    1. Go back to the master node and see the new node that joined, `kubectl get nodes`
 
     1. Describe a node with `kubectl describe nodes node2`
 
