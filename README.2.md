@@ -147,21 +147,21 @@ The get an:
 
 1. Watch them being started, `kubectl get pods -w`
 
-1. Create a ClusterIP Service for the API port: `kubectl expose deploy/elastic --port 9200`
+1. Create a ClusterIP Service for the API port: `kubectl run hello --image=wyntuition/hello-world:1 --replicas=3`
 
 1. Look at IP address allocated: `kubectl get svc`
 
 1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
 
-1. Send some requests: `curl http://$IP:9200/`
+1. Send some requests: `curl http://$IP:8000/`
 
 ## **EXERCISE: Rolling update**
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
 
-1. `kubectl set image deployment/elastic elastic=elasticsearch:5`
+1. `kubectl set image deployment/hello hello=wyntuition/hello-world:2`
 
-1. Clean up, `kubectl delete deploy/elastic`
+1. Clean up, `kubectl delete deploy/hello`
 
 ## Kubernetes Deployments
 
