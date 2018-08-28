@@ -143,25 +143,25 @@ The get an:
 
 ## **EXERCISE: Expose an app via a Service**
 
-1. Start some elasticsearch containers, `kubectl run elastic --image=elasticsearch:2 --replicas=4`
+1. Start some hello world containers, `kubectl run hello --image=wyntuition/docker-hello-api:1 --replicas=3`
 
 1. Watch them being started, `kubectl get pods -w`
 
-1. Create a ClusterIP Service for the API port: `kubectl expose deploy/elastic --port 9200`
+1. Create a ClusterIP Service for the API port: `kubectl expose deploy/hello --port 8000`
 
 1. Look at IP address allocated: `kubectl get svc`
 
-1. Get the IP address of the service: `IP=$(kubectl get svc elastic -o go-template --template '{{ .spec.clusterIP }}')`
+1. Get the IP address of the service: `IP=$(kubectl get svc hello -o go-template --template '{{ .spec.clusterIP }}')`
 
-1. Send some requests: `curl http://$IP:9200/`
+1. Send some requests: `curl http://$IP:8000/`
 
 ## **EXERCISE: Rolling update**
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
 
-1. `kubectl set image deployment/elastic elastic=elasticsearch:5`
+1. `kubectl set image deployment/hello hello=wyntuition/docker-hello-api:2`
 
-1. Clean up, `kubectl delete deploy/elastic`
+1. Clean up, `kubectl delete deploy/hello`
 
 ## Kubernetes Deployments
 
