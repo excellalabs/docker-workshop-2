@@ -250,7 +250,7 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
     1. Display information about a pod: `kubectl describe pod <pod-name>`
 
-    1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
+    1. Watch the logs with `kubectl logs deploy/docker-hello-api --tail 1 --follow`
 
     1. Clean up your app by running a *delete* command against the manifest you used to deploy,
 
