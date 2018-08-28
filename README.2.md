@@ -157,7 +157,7 @@ The get an:
 
 1. Send some requests: `curl http://$IP:8000/`
 
-1. Expose the application externally: `kubectl expose deploy/hello --name=hello2 --type=LoadBalancer --port=8000 --target-port=8000`
+1. Expose the application externally: `kubectl expose deploy/docker-hello-api --name=docker-hello-api-2 --type=LoadBalancer --port=8000 --target-port=8000`
 
 ## **EXERCISE: Rolling update**
 
