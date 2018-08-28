@@ -157,6 +157,10 @@ The get an:
 
 1. Send some requests: `curl http://$IP:8000/`
 
+1. Expose the application externally: `kubectl expose deploy/docker-hello-api --name=docker-hello-api-2 --type=LoadBalancer --port=8000 --target-port=8000`
+
+1. Check the External IP: `kubectl get svc docker-hello-api-2`.  On Play with K8, this will say `Pending`, but with AWS and GKE, you will get an external IP address.
+
 ## **EXERCISE: Rolling update**
 
 We're going to update the elasticsearch image our containers are using, in this case just to a newer version, but it would work the same way if you updated code in your app and had a new version of an image to apply.
