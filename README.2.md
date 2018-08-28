@@ -145,6 +145,8 @@ The get an:
 
 1. Start some hello world containers, `kubectl run hello --image=wyntuition/docker-hello-api:1 --replicas=3`
 
+    The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
+
 1. Watch them being started, `kubectl get pods -w`
 
 1. Create a ClusterIP Service for the API port: `kubectl expose deploy/hello --port 8000`
@@ -161,6 +163,8 @@ We're going to update the elasticsearch image our containers are using, in this 
 
 1. `kubectl set image deployment/hello hello=wyntuition/docker-hello-api:2`
 
+1. Check the status of the updates with `kubectl 
+
 1. Clean up, `kubectl delete deploy/hello`
 
 ## Kubernetes Deployments
@@ -171,32 +175,6 @@ A quick note about *Replication Controller*. They manage the desired state, such
 - Seamless rollbacks
 
 You update the existing deployment and apply it, and Kubernetes creates a new ReplicaSet and spins up new pods and in conjunction removing the old. It keeps the old replica set revision, so if a rollback is needed it can easily spin up pods within there and remove the new ones.
-
-## **EXERCISE: Create a deployment from a simple image using kubectl**
-
-The `kubectl run` command creates a deployment, apart of which creates a pod (along with a ReplicaSet) with your container(s).
-
-In general, users shouldn’t need to create pods directly. They should almost always use controllers even for singletons, such as Deployments.
-
-1. Create a Deployment:
-
-    1. Run an alpine image with a ping commnad via a pod: `kubectl run pingpong --image alpine ping 8.8.8.8`
-
-    1. Run `kubectl get all`. The results show:
-
-        - we created deploy/pingpong - the deployment that we just created, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
-
-        - our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
-
-        - the replica set created po/pingpong-yyyy - a pod created by the replica sets
-
-1. Run `kubectl logs deploy/pingpong --tail 1 --follow` to see the output.
-
-1. Scale by creating more copies of the pod: `kubectl scale deploy/pingpong --replicas 8`
-
-1. Go to node2 and do `docker ps` to see all the containers running there.
-
-1. Clean up your pods, `kubectl delete deploy/pingpong`
 
 ## Manifest files
 
@@ -210,9 +188,9 @@ In general, users shouldn’t need to create pods directly. They should almost a
         apiVersion: v1
         kind: Service
         metadata:
-          name: my-nginx-svc
+          name: docker-hello-api
           labels:
-            app: nginx
+            app: docker-hello-api
             zone: prod
             version: v1
         spec:
@@ -220,12 +198,12 @@ In general, users shouldn’t need to create pods directly. They should almost a
           ports:
           - port: 80
           selector:
-            app: nginx
+            app: docker-hello-api
         ---
         apiVersion: apps/v1beta1
         kind: Deployment
         metadata:
-          name: my-nginx
+          name: docker-hello-api
         spec:
           replicas: 3
           template:
@@ -234,8 +212,8 @@ In general, users shouldn’t need to create pods directly. They should almost a
                 app: nginx
             spec:
                 containers:
-                - name: nginx
-                image: nginx:1.7.9
+                - name: docker-hello-api
+                image: wyntuition/docker-hello-api:1
                 ports:
                 - containerPort: 80
         ```
@@ -245,16 +223,30 @@ In general, users shouldn’t need to create pods directly. They should almost a
     1. Run it directly from this file:
 
         ```bash
-         kubectl apply -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-nginx.yaml
+         kubectl apply -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-hello-api.yaml
         ```
 
-    You can now navigate to the page the Nginx is serving.
+    You can now navigate to the page.
 
-1. Display info about deployment: `kubectl describe deployment my-nginx`
+1. Display info about deployment: `kubectl describe deployment docker-hello-api`
 
-1. List the pods created by the deployment via a label: `kubectl get pods -l app=nginx`
+1. List the pods created by the deployment via a label: `kubectl get pods -l app=docker-hello-api`
 
 1. Display information about a pod: `kubectl describe pod <pod-name>`
+
+        - we created a deployment, a high-level construct which allows scaling, rolling updates, rollbacks, multiple deployments can be used together to implement a canary deployment, delegates pods management to replica sets
+
+        - our deployment created rs/pingpong-xxxx - a replica set created by the deployment, a low-level construct, makes sure that a given number of identical pods are running, allows scaling, rarely used directly
+
+        - the replica set created po/pingpong-yyyy - a pod created by the replica sets
+
+1. Run `kubectl logs wyntuition/docker-hello-api --tail 1 --follow` to see the output.
+
+1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 8`
+
+1. Go to node2 and do `docker ps` to see all the containers running there.
+
+1. Clean up your pods, `kubectl delete wyntuition/docker-hello-api`
 
 ## Next steps to production...
 
