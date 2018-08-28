@@ -4,8 +4,10 @@ metadata:
   name: docker-hello-api
   labels:
     app: docker-hello-api
+    tier: api
     zone: prod
     version: v1
+    track: stable
 spec:
   type: LoadBalancer
   ports:

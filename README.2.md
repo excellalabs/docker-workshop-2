@@ -77,6 +77,8 @@ kubectl is the main CLI you use to interface with the Kubernetes API and do most
 
 `kubectl <operation> <object> <resource name> <optional flags>`
 
+(Some operations include: create, get, delete, describe, rollout. Some objects include namespaces/ns, services/svc, deployments/deploy. replicaset/rs. pod)
+
 ### Imperative vs declarative
 
 You want to to use declarative format (yaml) for production, so you can describe and version your infrastructure.
@@ -154,6 +156,16 @@ Now the app is accessible from anywhere within the cluster, but we must do the f
 1. Check the External IP: `kubectl get svc docker-hello-api-2`
 
     On Play with K8, this will say *pending*, but with AWS and GKE, you will get an external IP address.
+
+## **EXERCISE: Scale**
+
+1. Scale by creating more copies of the pod via by declaraton in the manifest.
+
+    `kubectl scale wyntuition/docker-hello-api --replicas 5`
+
+1. Go to node2 and do `docker ps` to see all the containers running there.
+
+    (You could try autoscalaing with `kubectl autoscale deploy/docker-hello-api --min=3 --max=5`)
 
 ## **EXERCISE: Rolling update**
 
@@ -242,13 +254,9 @@ You update the existing deployment and apply it, and Kubernetes creates a new Re
 
     1. Watch the logs with `kubectl logs wyntuition/docker-hello-api --tail 1 --follow`
 
-## **EXERCISE: Scale your app**
+    1. Clean up your app by running a *delete* command against the manifest you used to deploy,
 
-1. Scale by creating more copies of the pod: `kubectl scale wyntuition/docker-hello-api --replicas 5`
-
-1. Go to node2 and do `docker ps` to see all the containers running there.
-
-1. Clean up your app by running a *delete* command against the manifest you used to deploy, `kubectl delete -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-hello-api.yaml`
+        `kubectl delete -f https://raw.githubusercontent.com/excellalabs/docker-workshop-2/master/examples/deployment-service-pod-hello-api.yaml`
 
 ## Next steps to production...
 
