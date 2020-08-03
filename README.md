@@ -1,4 +1,4 @@
-# Getting Started Deploying to Kubernetes
+# Deploying to Kubernetes Workshop
 
 In this workshop, we will take a containerized application, and go through basic steps to deploy it.
 
