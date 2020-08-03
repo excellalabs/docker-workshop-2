@@ -1,4 +1,4 @@
-# Getting started deploying with Docker using Kubernetes
+# Getting Started Deploying to Kubernetes
 
 In this workshop, we will take a containerized application, and go through basic steps to deploy it.
 
