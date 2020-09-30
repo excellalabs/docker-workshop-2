@@ -10,9 +10,7 @@ The curricula contained here are:
 
 # Kubernetes Fundamentals (developers & admins)
 
-- [ ] Initial overview and architecture:
-    - https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes
-    - Basic content - Up and Running (book), or free edX class https://www.edx.org/course/introduction-to-kubernetes
+- [ ] [Initial overview and architecture](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
 - [ ] Kubernetes: Up and Running (book)
 - [ ] CKA/CDAD video that covers walkthrus of all fundamentals
 - Review all terms & familiarize with core add-ons, vendors, community members
