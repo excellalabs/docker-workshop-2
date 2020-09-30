@@ -67,13 +67,13 @@ The curricula contained here are:
 ## Core topics
 
 * [ ] Flavors you can use - public, on-prem, managed, local
-* [ ] Creating a Kubernetes cluster [admin] - node, networking, etc requirements
+* [ ] Creating a Kubernetes cluster - node, networking, etc requirements
 * [ ] Managing Pods and Deployments
     - API access and commands
     - Running Pods using Deployments
     - Managing Storage
     - Managing Pod Networking
-* [ ] Managing Kubernetes Clusters [admin]
+* [ ] Managing Kubernetes Clusters
     - Managing API Object Specifications, API extension, CRs
     - Managing scheduling
     - Managing security settings - API access, auth, authorization modes, security contexts, accounts
