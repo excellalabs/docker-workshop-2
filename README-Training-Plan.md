@@ -18,6 +18,7 @@ The curricula contained here are:
 - Review all terms & familiarize with core add-ons, vendors, community members
 - [ ] Kubernetes Best Practices (book)
 - [ ] [Hands-On Workshop Deploying to Kubernetes]()
+- [ ] [Set up Minikube](https://minikube.sigs.k8s.io/docs/) locally to have a real cluster to work with
 
 # Developers 
 
@@ -51,10 +52,9 @@ The curricula contained here are:
     - [ ] fluentd for logging, jaeger for tracing, tracing with zipkin
     - [ ] Service Mesh set up and configure (Linkerd or Envoy/Istio)
 - [ ] Set up local development workflow via Cloud Code > Skaffold
-- [ ] Create & deploy microservice-based app in helm chart
-    - [ ] Ingress, Service/Endpoint strategies 
-- [ ] Configure a multi-service app to deploy in k8s cluster
-    - [ ] set up application secrets, load balancers, rate-limiters, auto-scaling
+- [ ] [Tutorials](https://kubernetes.io/docs/tutorials/) for the following: 
+    - [ ] Configure a multi-service app to deploy in k8s cluster
+    - [ ] Set up application secrets, load balancers, rate-limiters, auto-scaling
 - [ ] CI/CD: set up Argo for CD/CD; Flux for cross-cluster GitOps
 - Extend:
     - [ ] Create CRDs to extend functionality, api aggregation and web hooks
@@ -89,7 +89,6 @@ The curricula contained here are:
 
 - [ ] How to organize app in kubernetes objects - labels, pods, services, etc    
 - [ ] Standard patterns for infrastructure architecture
--
 - [ ] Scale nodes go through cross-node pod networking
 - [ ] Set up CNI, CSI
 - [ ] Create operator
