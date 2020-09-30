@@ -1,12 +1,10 @@
 # Kubernetes Curricula
 
-Follow through the appropriate curricula, and each checkbox item should be completed. Fundamental knowledge is needed, supplemented by hands-on learning, which is included in these curricula. 
-
-The CKAD or CKA for developers and admins respectively are good measures, as they require real coding.
+Follow through the appropriate curricula - for a developer or admin and the fundamentals for both, and each checkbox item should be completed. It starts with core knowledge, supplemented by hands-on learning. The CKAD or CKA for developers and admins respectively are good measures to conclude with, as they require real coding.
  
 The curricula contained here are:
 
-* Kubernetes Fundamentals
+* Kubernetes Fundamentals (for all)
 * Developers' Curriculum
 * Admins' Curriculum
 
