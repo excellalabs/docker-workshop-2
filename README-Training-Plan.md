@@ -12,11 +12,12 @@ The curricula contained here are:
 
 - [ ] [Initial overview and architecture](https://www.digitalocean.com/community/tutorials/an-introduction-to-kubernetes)
 - [ ] Kubernetes: Up and Running (book)
-- [ ] CKA/CDAD video that covers walkthrus of all fundamentals
-- Review all terms & familiarize with core add-ons, vendors, community members
+- [ ] [CKA/CDAD video - fundamentals, first 7 lessons](https://learning.oreilly.com/videos/certified-kubernetes-administrator/9780136677482/9780136677482-CKA1_02_05_07)
+- [ ] Read thru [Kubernetes docs](https://kubernetes.io/docs/)
+- [ ] Review all terms & familiarize with core [add-ons, vendors, community members](https://www.cncf.io/projects/)
 - [ ] Kubernetes Best Practices (book)
-- [ ] [Hands-On Workshop Deploying to Kubernetes]()
-- [ ] [Set up Minikube](https://minikube.sigs.k8s.io/docs/) locally to have a real cluster to work with
+- [ ] [Hands-On Workshop Deploying to Kubernetes](README-Kubernetes.2.md)
+- [ ] [Set up Minikube, Skaffold and Cloud Code](https://dzone.com/articles/minikube-cloud-code-vscode)
 
 # Developers 
 
