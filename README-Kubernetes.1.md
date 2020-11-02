@@ -1,7 +1,9 @@
 
 ## What is Kubernetes?
 
-Kubernetes is an orchestrator. It runs and manages containerized applications on a cluster. It is great at making multiple servers (i.e. kernels) look like one, so you can deploy and manage deployed containers.
+Called an orchestrator, it is software handles deploying and maintaining your software in a resilient and elastic way, across distributed systems. It runs on a cluster of servers. It is great at making multiple servers (i.e. kernels) look like one, so it's easier to manage.
+
+It’s also an abstraction layer between cloud infrastructure like AWS, and software applications. Think of it as a USB port – if you make a device that can plug into USB, in can plug into anything that supports it. If you make software that can plug into Kubernetes, it can "plug" into any host that supports it, from AWS to on-prem servers to edge devices.
 
 *Basic things we can ask Kubernetes to do*
 
@@ -29,6 +31,28 @@ Kubernetes uses persistent objects to manage its state, including:
   * policies around how those applications behave (i.e. restart, upgrades, fault-tolerance)
 
 Objects are a **record of intent** meaning once created, Kubernetes works to take this **desired state** to **actual state**. 
+
+## Who needs to know what about Kubernetes?
+
+Kubernetes is something many developers, DevOps engineers, cloud architects, SREs and sys admins will likely touch, albeit in different ways. Developers need to know what it means for local development, and packaging up their software for deployment. Admins need to know about building and maintaining Kubernetes clusters. There is a lot inbetween too, from extending Kubernetes to leveraging a pipeline template to be used across dozens or hundreds of deployed apps. 
+
+This is a brief overview of what each role needs to know at a very high level. For a place to start trying Kubernetes, see this [example setup](https://github.com/Wyntuition/java-cloud-code-guestbook).
+
+### What do developers need to know about Kubernetes?
+
+Developers need to know how to build applications with the right configuration for deploying to Kubernetes. More and more, it is becoming most productive to develop directly against a cluster, whether local or remote, so knowing how to interact with a Kubernetes cluster and how it works is important.
+
+_Local Development Tooling: Cloud Code, Skaffold_
+
+### What do DevOps Engineers & Cloud Architects need to know about Kubernetes?
+
+There is as much work as ever for these roles, however Kubernetes is causing it to shift some time needed to build pipelines away, since they more and more can be generated quickly for cloud native microservices that plug into Kubernetes. More time is needed managing apps deployed in Kubernetes, from creating clusters to determining distributed metrics implementation, to pipeline still, and much more. 
+
+### What do SREs and sys admins need to know about Kubernetes?
+
+You will need to know the intimate details of architecting, creating and managing Kubernetes clusters.
+
+**See this [Kubernetes Curricula](README-Training-Plan.md) for role-based learning resources** 
 
 ## DIVE DEEPER
 
