@@ -41,7 +41,7 @@ The curricula contained here are:
     - Working with Deployments and rolling updates and rollbacks
     - Jobs and CronJobs
     - Using Labels, Selectors, Annotations
-* [ ] Services & Networking - using Services objects nad NetworkPolicies
+* [ ] Services & Networking - using Services objects and NetworkPolicies
 * [ ] State Persistence - PersistentVolumeClaims
 
 ## Hands-on 
@@ -55,11 +55,10 @@ The curricula contained here are:
     - [ ] Configure a multi-service app to deploy in k8s cluster
     - [ ] Set up application secrets, load balancers, rate-limiters, auto-scaling
 - [ ] CI/CD: set up Argo for CD/CD; Flux for cross-cluster GitOps
-- Extend:
+- Extend (advanced):
     - [ ] Create CRDs to extend functionality, api aggregation and web hooks
     - [ ] Create operator
 - [ ] Auto-scaling pods
-- [ ] Planning an implementation & implementation details
 
 # Admins
 
@@ -73,7 +72,7 @@ The curricula contained here are:
     - Managing Storage
     - Managing Pod Networking
 * [ ] Managing Kubernetes Clusters
-    - Managing API Object Specifications, API extension, CRs
+    - Managing API Object Specifications, API extension, CRDs
     - Managing scheduling
     - Managing security settings - API access, auth, authorization modes, security contexts, accounts
     - Managing networking - CNI, plugings, Kubernetes DNS, managing network policies, managing kubernetes networking
@@ -83,6 +82,7 @@ The curricula contained here are:
     - Backups - etcd, etc
     - Performance tuning and configuration of Ingress Controller
     - Cluster upgrades, app & data migration across clusters 
+ * [ ] Planning an implementation & implementation details
 
 ## Hands-on
 
@@ -94,4 +94,7 @@ The curricula contained here are:
 - multi-node and multi-cluster
     - [ ] create multi-node clusters locally (i.e. vagrant/ansible, etc)
     - [ ] try kubernetes the hard way
-- [ ] Planning an implementation & implementation details
+- [ ] Planning an implementation & implementation details - see templates 
+    - [ ] Implementation Plan
+    - [ ] [Implemtation details](https://kubernetes.io/docs/reference/setup-tools/kubeadm/implementation-details)
+    - [ ] [Deployment Strategies](https://www.weave.works/blog/kubernetes-deployment-strategies)
