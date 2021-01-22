@@ -86,10 +86,11 @@ The curricula contained here are:
 
 ## Hands-on
 
-- [ ] How to organize app in kubernetes objects - labels, pods, services, etc    
+- [ ] Plan how to organize app in kubernetes objects - labels, pods, services, etc    
 - [ ] Standard patterns for infrastructure architecture
 - [ ] Scale nodes go through cross-node pod networking
 - [ ] Set up CNI, CSI
+- [ ] [Kubernetes the hard way (set up from scratch to really learn it)](https://github.com/kelseyhightower/kubernetes-the-hard-way)
 - [ ] Create operator
 - multi-node and multi-cluster
     - [ ] create multi-node clusters locally (i.e. vagrant/ansible, etc)
