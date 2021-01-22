@@ -23,6 +23,8 @@ The curricula contained here are:
 
 ## Core topics
 
+_All topics covered in resources above_
+
 * [ ] Core Concepts
     - API primitives
     - Create and configure basic pods
@@ -63,6 +65,8 @@ The curricula contained here are:
 # Admins
 
 ## Core topics
+
+_All topics covered in resouces listed above, notably this [CKA/CDAD video](https://learning.oreilly.com/videos/certified-kubernetes-administrator/9780136677482/9780136677482-CKA1_02_05_07)_
 
 * [ ] Flavors you can use - public, on-prem, managed, local
 * [ ] Creating a Kubernetes cluster - node, networking, etc requirements
