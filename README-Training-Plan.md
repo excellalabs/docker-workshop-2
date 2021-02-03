@@ -1,6 +1,6 @@
 # Kubernetes Curricula
 
-Follow through the appropriate curricula - for a developer or admin and the fundamentals for both, and each checkbox item should be completed. It starts with core knowledge, supplemented by hands-on learning. The CKAD or CKA for developers and admins respectively are good measures to conclude with, as they require real coding.
+Follow through the appropriate curricula - for a developer or admin and the fundamentals for both, and each checkbox item should be completed. It starts with core knowledge, supplemented by hands-on learning. The CKAD or CKA for developers and admins respectively are good measures to conclude with, as they require real coding, however these curricula are for gaining a professional foundation of Kubernetes, beyond just passing the exams (For just passing the exams, use just the mentioned video or its CKAD nad CKS counterparts, Kubernetes Docs, and practice).
  
 The curricula contained here are:
 
@@ -15,12 +15,16 @@ The curricula contained here are:
 - [ ] [CKA/CDAD video - fundamentals, first 7 lessons](https://learning.oreilly.com/videos/certified-kubernetes-administrator/9780136677482/9780136677482-CKA1_02_05_07)
 - [ ] Read thru [Kubernetes docs](https://kubernetes.io/docs/)
 - [ ] Review all terms & familiarize with core [add-ons, vendors, community members](https://www.cncf.io/projects/)
-- [ ] Kubernetes Best Practices (book)
 - [ ] [Hands-On Workshop Deploying to Kubernetes](README-Kubernetes.2.md)
-- [ ] [Set up Minikube, Skaffold and Cloud Code](https://dzone.com/articles/minikube-cloud-code-vscode)
+- [ ] [Set up Minikube for lightweight local clusters](https://dzone.com/articles/minikube-cloud-code-vscode)
+
+Additional Resources:
+- Kubernetes Best Practices (book)
+- [Kubernetes Exam Simulator](https://killer.sh/)
 
 # Developers 
 
+Ensure you understand the below core topics, and can do/have done the hands-on items.
 ## Core topics
 
 * [ ] Core Concepts
@@ -65,7 +69,10 @@ The curricula contained here are:
 
 ## Core topics
 
+Ensure you understand the below core topics, and can do/have done the hands-on items. Also go through the rest of the following video (or equivalent content), [CKA/CDAD video - fundamentals, lessons 8 through end](https://learning.oreilly.com/videos/certified-kubernetes-administrator/9780136677482/9780136677482-CKA1_02_05_07).
+
 * [ ] Flavors you can use - public, on-prem, managed, local
+* [ ] Core knowledge of Linux, each major piece, including networking, TLS and containerization concepts
 * [ ] Creating a Kubernetes cluster - node, networking, etc requirements
 * [ ] Managing Pods and Deployments
     - API access and commands
